@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Protocole des Liens Vrais — Connexions Silencieuses</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IBM+Plex+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script async defer src="https://js.whop.com/static/checkout/loader.js"></script>
+
+<style>
+:root {
+  --bg:             #0B0B0B;
+  --bg-surface:     #141414;
+  --bg-elevated:    #1C1C1C;
+  --border:         #2A2A2A;
+  --border-light:   #1F1F1F;
+  --text-primary:   #F2EDE6;
+  --text-secondary: #8A8279;
+  --text-ghost:     #3A3530;
+  --accent:         #C8903A;
+  --accent-dim:     rgba(200, 144, 58, 0.10);
+  --accent-border:  rgba(200, 144, 58, 0.25);
+  --font-display:   'Cormorant Garamond', Georgia, serif;
+  --font-body:      'Lora', Georgia, serif;
+  --font-mono:      'IBM Plex Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  background: #050505;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Amber top bar */
+body::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 80px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── LEFT COLUMN ── */
+.col-product {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.brand-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.product-title {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.product-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.product-subtitle {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  max-width: 400px;
+}
+
+.book-mockup {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 44px;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
+}
+
+.product-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  max-width: 420px;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.benefit-marker {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.benefit-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-primary);
+}
+
+.separator {
+  width: 32px;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 24px;
+}
+
+.social-proof {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-ghost);
+  line-height: 1.8;
+}
+
+/* ── RIGHT COLUMN ── */
+
+.checkout-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.checkout-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.checkout-secure {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--text-ghost);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkout-secure::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4CAF50;
+  opacity: 0.7;
+}
+
+.checkout-embed-wrap {
+  width: 100%;
+  padding: 8px;
+}
+
+.checkout-embed-wrap iframe {
+  width: 100% !important;
+  min-height: 900px;
+  border: none !important;
+  display: block;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .product-title {
+    font-size: 40px;
+  }
+
+  .col-product {
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-subtitle {
+    max-width: 100%;
+  }
+
+  .book-mockup {
+    max-width: 220px;
+  }
+
+  .benefit-item {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .separator {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+  <div class="container">
+
+    <!-- LEFT — Product -->
+    <div class="col-product">
+      <div class="brand-tag">Connexions Silencieuses</div>
+
+      <h1 class="product-title">
+        Le Protocole des<br>
+        <em>Liens Vrais</em>
+      </h1>
+
+      <p class="product-subtitle">
+        Un système pour passer de zéro cercle social à 2 connexions réelles — sans small talk, sans te forcer à être quelqu'un d'autre.
+      </p>
+
+      <img class="book-mockup" src="Image 1.png" alt="Le Protocole des Liens Vrais">
+
+      <p class="product-body">
+        Tu n'as pas besoin de plus d'interactions. Tu as besoin des bonnes — construites méthodiquement, à basse énergie, avec les rares personnes qui méritent ta profondeur.
+      </p>
+
+      <div class="benefits">
+        <div class="benefit-item">
+          <span class="benefit-marker">01</span>
+          <span class="benefit-text">Un filtre pour arrêter de perdre ton énergie dans les mauvais environnements avec les mauvaises personnes.</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-marker">02</span>
+          <span class="benefit-text">Un protocole de répétition qui construit la familiarité sans effort de performance sociale.</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-marker">03</span>
+          <span class="benefit-text">Une banque de 40 questions calibrées pour créer une intimité réelle — dès la deuxième conversation.</span>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-marker">04</span>
+          <span class="benefit-text">Un plan d'action sur 8 semaines, 90 minutes par semaine. Pas plus.</span>
+        </div>
+      </div>
+
+      <div class="separator"></div>
+
+      <div class="social-proof">
+        Format PDF · 43 pages · Accès immédiat<br>
+        Construit sur de la recherche en psychologie sociale. Zéro conseil de coach.
+      </div>
+    </div>
+
+    <!-- RIGHT — Checkout -->
+    <div class="col-checkout">
+      <div class="checkout-panel">
+        <div class="checkout-header">
+          <span class="checkout-label">Accès au guide</span>
+          <span class="checkout-secure">Paiement sécurisé</span>
+        </div>
+        <div class="checkout-embed-wrap">
+          <div
+            data-whop-checkout-plan-id="plan_Z1dnklYYeLqzN"
+            data-whop-checkout-theme="dark"
+            style="width: 100%;"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Écoute les events de resize envoyés par l'iframe Whop
+  window.addEventListener('message', function(e) {
+    if (!e.data) return;
+    var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+    // Whop envoie typiquement {type:'resize', height:X} ou {height:X}
+    var h = data.height || (data.type === 'resize' && data.height);
+    if (h && h > 0) {
+      var iframe = document.querySelector('.checkout-embed-wrap iframe');
+      if (iframe) iframe.style.minHeight = h + 'px';
+    }
+  });
+</script>
+</body>
+</html>
