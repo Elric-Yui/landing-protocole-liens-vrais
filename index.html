@@ -230,7 +230,7 @@ blockquote cite {
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
-  margin: 32px 0;
+  margin: 80px 0 32px;
 }
 
 .mech-panel {
@@ -306,6 +306,18 @@ blockquote cite {
   position: relative;
 }
 
+@keyframes glowPulse {
+  0%   { opacity: 0.6; transform: scale(1); }
+  50%  { opacity: 1;   transform: scale(1.08); }
+  100% { opacity: 0.6; transform: scale(1); }
+}
+
+@keyframes glowPulseImg {
+  0%   { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50%  { opacity: 1;   transform: translate(-50%, -50%) scale(1.12); }
+  100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+}
+
 .module-img::before {
   content: '';
   position: absolute;
@@ -313,6 +325,11 @@ blockquote cite {
   background: radial-gradient(ellipse at center, rgba(200,144,58,0.22) 0%, transparent 68%);
   z-index: 0;
   pointer-events: none;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.glow-anim {
+  animation: glowPulseImg 6s ease-in-out infinite;
 }
 
 .module-img img {
@@ -436,7 +453,7 @@ blockquote cite {
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #C8903A;
   margin-bottom: 10px;
 }
 
@@ -641,6 +658,10 @@ blockquote cite {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
+  #scroll-widget { left: 6px; }
+  #scroll-track { width: 2px; height: 160px; }
+  #scroll-label { font-size: 6px; }
+
   .sales-page { padding: 60px 5vw 80px; }
   .headline { font-size: 32px; }
   .callout { font-size: 24px; }
@@ -735,9 +756,9 @@ blockquote cite {
 
   <p class="body-p">Et je dis pas ça juste pour le marketing.</p>
 
-  <p class="body-p">Je le dis parce que chaque conseil qu'on t'a donné : les clubs, les sorties, les afterworks, les "sois plus ouvert", <strong><strong>a été conçu pour un cerveau qui fonctionne à la dopamine.</strong></strong></p>
+  <p class="body-p">Je le dis parce que chaque conseil qu'on t'a donné : les clubs, les sorties, les afterworks, les "sois plus ouvert", <strong><strong>a été conçu pour un cerveau qui <span style="text-decoration: underline; text-underline-offset: 4px;">fonctionne à la dopamine.</span></strong></strong></p>
 
-  <p class="body-p">Le tien, le cerveau des introvertis, fonctionne à l'acétylcholine. (c'est prouvé scientifiquement)</p>
+  <p class="body-p" style="color: var(--accent);">Le tien, le cerveau des introvertis, fonctionne à l'acétylcholine. (c'est prouvé scientifiquement)</p>
 
   <p class="body-p">Ce sont des systèmes neurochimiques opposés. T'as appliqué le mode d'emploi de quelqu'un d'autre à ton propre cerveau. Pendant des années.</p>
 
@@ -746,11 +767,11 @@ blockquote cite {
 
 
   <!-- LE MÉCANISME -->
-  <h2 class="callout"><strong style="text-decoration: underline; text-underline-offset: 6px;">La méthode câblée uniquement pour ton cerveau d'introverti</strong></h2>
+  <h2 class="callout"><strong style="text-decoration: underline; text-underline-offset: 6px;">La méthode câblée spécifiquement et uniquement pour ton cerveau d'introverti</strong></h2>
 
   <p class="body-p">Et cette méthode câblée uniquement pour toi c'est : <strong style="color: var(--accent); text-decoration: underline; text-underline-offset: 4px;">Le Protocole des Liens Vrais</strong>.</p>
 
-  <p class="body-p">Si tu lis ces lignes, il reste quelque chose en toi.</p>
+  <p class="body-p">Si tu lis ces lignes, c'est qu'il reste quelque chose en toi.</p>
 
   <p class="body-p">Pas de l'espoir naïf. Juste une voix, quelque part, qui dit que ça ne peut pas continuer comme ça indéfiniment.</p>
 
@@ -758,21 +779,23 @@ blockquote cite {
 
   <p class="body-p">Je m'appelle [Prénom]. Et je suis introverti à 96%.<br>
   Pas "un peu réservé". Pas "timide en soirée".<br>
-  96% sur chaque test de personnalité que j'ai passé.<br>
+  <span style="color: var(--accent);">96% sur chaque test de personnalité que j'ai passé.</span><br>
   Le genre de score qui fait dire aux gens "ah ouais quand même" avant de changer de sujet.</p>
 
   <p class="body-p">Pendant des années, j'ai utilisé ce chiffre comme une explication. Presque une identité.<br>
   C'est ma nature. Je suis câblé comme ça. Rien à faire.</p>
 
-  <p class="body-p">Et puis un dimanche soir, comme beaucoup de tes dimanches soirs, j'ai regardé autour de moi.<br>
-  L'appartement vide. Le téléphone sans notification. Le silence qui pèse rien quand t'en as besoin, et tout quand t'en veux plus.</p>
+  <div style="border: 2px dashed var(--accent); border-radius: 4px; padding: 24px 28px; margin: 32px auto; max-width: 640px; text-align: left; background: var(--accent-dim);">
+    <p style="font-family: var(--font-body); font-size: 17px; color: var(--text-primary); line-height: 1.8; margin: 0;">Et puis un dimanche soir, comme beaucoup de tes dimanches soirs, j'ai regardé autour de moi.<br>
+    L'appartement vide. Le téléphone sans notification. Le silence qui pèse rien quand t'en as besoin, et tout quand t'en veux plus.</p>
+  </div>
 
   <p class="body-p">Le désespoir a été plus fort que mon introversion.</p>
 
   <p class="body-p">Alors j'ai cherché.<br>
   Pas des podcasts de développement personnel avec des mecs qui sourient trop.<br>
   Pas des coachs en vie qui t'expliquent qu'il faut "rayonner son énergie".<br>
-  Des études. Des chercheurs. Des mécanismes réels sur comment les liens humains se forment.</p>
+  <span style="text-decoration: underline; text-underline-offset: 4px;">Des études. Des chercheurs. Des mécanismes réels sur comment les liens humains se forment.</span></p>
 
   <p class="body-p">J'ai appliqué. J'ai échoué. J'ai recommencé différemment.<br>
   J'ai croisé les travaux de Zajonc sur l'exposition répétée, d'Aron sur l'intimité comme protocole, de Hall sur le temps exact qu'il faut pour qu'une amitié devienne réelle.<br>
@@ -781,20 +804,25 @@ blockquote cite {
   <p class="body-p">Ce que j'ai construit ne ressemble à rien de ce que t'as essayé avant.<br>
   Pas parce que c'est magique. Parce que c'est construit différemment depuis le début.</p>
 
-  <p class="body-p">Toutes les méthodes que t'as croisées partent du même postulat : t'as un problème de personnalité à corriger.<br>
+  <p class="body-p"><span style="color: var(--accent);">Toutes les méthodes que t'as croisées partent du même postulat : t'as un problème de personnalité à corriger.</span><br>
   Sois plus ouvert. Sois plus présent. Sois plus, globalement.<br>
   Celle-ci part d'un postulat opposé.</p>
 
-  <p class="body-p"><strong>Tu n'es pas le problème. Tu n'as pas de défaut de personnalité.<br>
+  <p class="body-p"><strong style="color: #C8903A;">Tu n'es pas le problème.<br>
+  Tu n'as pas de défaut de personnalité.<br>
   Tu as un défaut de système.</strong></p>
 
   <p class="body-p">Le Protocole des Liens Vrais ne te demande pas de devenir quelqu'un d'autre.<br>
   Il te donne une architecture relationnelle construite pour fonctionner avec exactement le type de cerveau que t'as déjà.</p>
 
-  <p class="body-p">Le système exact pour <strong>passer de zéro connexion réelle à 2 personnes que tu peux appeler à 23h, en 56 jours et 90 min/semaine</strong>, sans forcer une seule interaction, sans jouer l'extraverti, sans te vider.</p>
+  <p class="body-p">C'est le système exact pour <strong>passer de zéro connexion réelle à 2 personnes que tu peux appeler à 23h, en 56 jours et 90 min/semaine</strong>, sans forcer une seule interaction, sans jouer l'extraverti, sans te vider.</p>
 
-  <div style="margin: 40px 0; text-align: center; position: relative;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(ellipse at center, rgba(200,144,58,0.75) 0%, rgba(200,144,58,0.35) 40%, transparent 70%); filter: blur(60px); pointer-events: none; z-index: 0;"></div>
+  <div style="text-align: center; margin: 48px 0 24px;">
+    <span style="font-family: var(--font-display); font-size: 42px; font-weight: 700; color: #C8903A; text-decoration: underline; text-underline-offset: 6px;">Je te présente Le Protocole des Liens Vrais</span>
+  </div>
+
+  <div style="margin: 40px 0; text-align: center; position: relative; display: inline-block; width: 100%;">
+    <div class="glow-anim" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; height: 100%; background: radial-gradient(ellipse at center, rgba(200,144,58,0.75) 0%, rgba(200,144,58,0.35) 40%, transparent 70%); filter: blur(60px); pointer-events: none; z-index: 0;"></div>
     <img src="visual product.png" alt="Le Protocole des Liens Vrais" style="max-width: 800px; width: 100%; display: inline-block; position: relative; z-index: 1;">
   </div>
 
@@ -802,26 +830,26 @@ blockquote cite {
 
     <!-- PAS -->
     <div style="display: flex; flex-direction: column;">
-      <div style="font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px; text-align: center;">Ce que ce système n'est pas</div>
+      <div style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; text-align: center; text-decoration: underline; text-underline-offset: 5px;">Ce que ce système n'est pas</div>
       <div class="mech-panel" style="flex: 1; position: relative; overflow: hidden; border: 1px solid rgba(180,40,40,0.3); background: #0B0B0B;">
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(ellipse at center, rgba(180,30,30,0.55) 0%, rgba(140,20,20,0.25) 50%, transparent 75%); filter: blur(60px); pointer-events: none;"></div>
-        <ul style="position: relative; z-index: 1;">
-          <li>Un cours de confiance en soi</li>
-          <li>Un programme pour devenir "plus sociable"</li>
-          <li>Une injonction à "sortir de ta zone de confort"</li>
+        <ul style="position: relative; z-index: 1; list-style: none; padding-left: 0;">
+          <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: #e05555; font-size: 16px; flex-shrink: 0; margin-top: 1px;">✕</span>Un cours de confiance en soi</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: #e05555; font-size: 16px; flex-shrink: 0; margin-top: 1px;">✕</span>Un programme pour devenir "plus sociable"</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: #e05555; font-size: 16px; flex-shrink: 0; margin-top: 1px;">✕</span>Une injonction à "sortir de ta zone de confort"</li>
         </ul>
       </div>
     </div>
 
     <!-- EST -->
     <div style="display: flex; flex-direction: column;">
-      <div style="font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--accent); margin-bottom: 16px; text-align: center;">Ce que ce système est</div>
+      <div style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--accent); margin-bottom: 16px; text-align: center; text-decoration: underline; text-underline-offset: 5px;">Ce que ce système est</div>
       <div class="mech-panel is-panel" style="flex: 1; position: relative; overflow: hidden;">
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; height: 90%; background: radial-gradient(ellipse at center, rgba(200,144,58,0.55) 0%, rgba(200,144,58,0.2) 50%, transparent 75%); filter: blur(50px); pointer-events: none;"></div>
-        <ul style="position: relative; z-index: 1;">
-          <li>Une architecture relationnelle construite spécifiquement pour ton câblage.</li>
-          <li>Filtrer au lieu de forcer. Répéter à basse intensité. Créer de la profondeur par micro-vulnérabilité. Convertir du collectif au 1-to-1.</li>
-          <li>Quatre piliers. Un résultat mesurable. Aucun effort de performance sociale.</li>
+        <ul style="position: relative; z-index: 1; list-style: none; padding-left: 0;">
+          <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: #4caf7d; font-size: 16px; flex-shrink: 0; margin-top: 1px;">✓</span>Une architecture relationnelle construite spécifiquement pour ton câblage.</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: #4caf7d; font-size: 16px; flex-shrink: 0; margin-top: 1px;">✓</span>Filtrer au lieu de forcer. Répéter à basse intensité. Créer de la profondeur par micro-vulnérabilité. Convertir du collectif au 1-to-1.</li>
+          <li style="display: flex; align-items: flex-start; gap: 10px;"><span style="color: #4caf7d; font-size: 16px; flex-shrink: 0; margin-top: 1px;">✓</span>Quatre piliers. Un résultat mesurable. Aucun effort de performance sociale.</li>
         </ul>
       </div>
     </div>
@@ -843,7 +871,7 @@ blockquote cite {
       <h3 class="module-title">Le Cadre Mental</h3>
       <div class="module-body">
         <p>Tu lis les données neuro sur l'acétylcholine.</p>
-        <p>Tu comprends pourquoi chaque conseil qu'on t'a donné était conçu pour un cerveau différent du tien.</p>
+        <p><strong style="text-decoration: underline; text-underline-offset: 4px;">Tu comprends pourquoi chaque conseil qu'on t'a donné était conçu pour un cerveau différent du tien.</strong></p>
         <p>Tu sors de ce module avec une conviction : tu n'as pas besoin de te réparer. Tu as besoin d'un système calibré pour toi.</p>
       </div>
     </div>
@@ -859,7 +887,7 @@ blockquote cite {
       <h3 class="module-title">Le Filtre</h3>
       <div class="module-body">
         <p>Tu cartographies tes environnements actuels avec la grille d'évaluation.</p>
-        <p>Tu identifies en moins d'une heure quels contextes te coûtent de l'énergie et lesquels créent naturellement de la proximité.</p>
+        <p><strong style="text-decoration: underline; text-underline-offset: 4px;">Tu identifies en moins d'une heure quels contextes te coûtent de l'énergie et lesquels créent naturellement de la proximité.</strong></p>
         <p>À la fin, tu as une liste de 2-3 environnements à haute densité de profils compatibles.</p>
         <p>Tu arrêtes de gaspiller ton énergie dans des afterworks de Kévin-Alexandre.</p>
       </div>
@@ -878,7 +906,7 @@ blockquote cite {
         <p>Tu construis ta routine 90 min/semaine avec le template hebdomadaire.</p>
         <p>Tu n'as rien à "dire" de particulier. La répétition fait le travail.</p>
         <p>Au bout de 3 semaines, certaines personnes commencent à te reconnaître, à te chercher.</p>
-        <p>La familiarité s'installe sans effort conscient.</p>
+        <p><strong style="text-decoration: underline; text-underline-offset: 4px;">La familiarité s'installe sans effort conscient.</strong></p>
         <p>Robert Zajonc a démontré ça en 1968 : <strong>la simple exposition répétée augmente l'affinité.</strong></p>
         <p>Ta présence régulière est plus puissante que ton éloquence.</p>
       </div>
@@ -897,7 +925,7 @@ blockquote cite {
         <p>Tu utilises la banque de 40 questions, 3 niveaux calibrés.</p>
         <p>Tu commences au Niveau 1 pour tester l'ouverture.</p>
         <p>Tu montes au Niveau 2 quand tu sens la réponse qui va au-delà du surface.</p>
-        <p>À la fin de ce module, tu as des conversations que la plupart des introvertis n'ont jamais, sans avoir eu à "performer" quoi que ce soit.</p>
+        <p><strong style="text-decoration: underline; text-underline-offset: 4px;">À la fin de ce module, tu as des conversations que la plupart des introvertis n'ont jamais, sans avoir eu à "performer" quoi que ce soit.</strong></p>
       </div>
     </div>
   </div>
@@ -913,7 +941,7 @@ blockquote cite {
       <div class="module-body">
         <p>Tu appliques le protocole de conversion en 3 étapes : groupe &rarr; conversation solo &rarr; rituel récurrent.</p>
         <p>Tu utilises les scripts exacts, formulés pour ne jamais sembler désespéré ni forcé.</p>
-        <p>Au bout de 8 semaines, tu as 1 ou 2 connexions qui sont devenues réelles.</p>
+        <p><strong style="text-decoration: underline; text-underline-offset: 4px;">Au bout de 8 semaines, tu as 1 ou 2 connexions qui sont devenues réelles.</strong></p>
         <p>Pas des connaissances. Des gens qui t'envoient un message un mardi sans raison.</p>
       </div>
     </div>
@@ -922,20 +950,19 @@ blockquote cite {
 
 
   <!-- SOCIAL PROOF -->
-  <h2 class="callout">Ce n'est pas du bullshit, ça marche réellement</h2>
+  <h2 class="callout"><strong style="text-decoration: underline; text-underline-offset: 6px;">Ce n'est pas du bullshit, ça marche réellement</strong></h2>
 
-  <p class="body-p">Laisse moi te parler de Erwan.</p>
+  <p class="body-p">Laisse moi te parler de Erwan. (le voici)</p>
 
   <div style="text-align: center; margin: 0 auto 40px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
+    <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; text-align: center;">Erwan, 20 ans, Bordeaux</div>
     <div style="position: absolute; inset: -30px; background: radial-gradient(ellipse at center, rgba(200,144,58,0.18) 0%, transparent 70%); pointer-events: none;"></div>
     <img src="Erwan jeune portrait noir et blanc.png" alt="Erwan" style="width: 520px; border-radius: 4px; display: block; position: relative; z-index: 1;">
   </div>
 
-  <span class="proof-name">Erwan, 20 ans, Bordeaux</span>
+  <p class="body-p">Erwan, 20 ans, stagiaire en remote depuis Bordeaux, <span style="color: #C8903A; text-decoration: underline; text-underline-offset: 4px;">est passé d'un dimanche soir à regarder les vlogs d'Août de Lena Situations pour l'illusion de la compagnie, à une personne dans sa vie qu'il peut appeler sans raison valable.</span><br>Il a voulu s'arrêter à un seul lien.<br>Ça lui suffit pour le moment.</p>
 
-  <p class="body-p">Erwan, 20 ans, stagiaire en remote depuis Bordeaux, est passé d'un dimanche soir à regarder les vlogs d'Août de Lena Situations pour l'illusion de la compagnie, à une personne dans sa vie qu'il peut appeler sans raison valable. Il a voulu s'arrêter à un seul lien. Ça lui suffit pour le moment.</p>
-
-  <p class="body-p">Comment il a fait ?</p>
+  <p class="body-p"><strong style="font-size: 24px; text-decoration: underline; text-underline-offset: 5px;">Comment il a fait ?</strong></p>
 
   <ul class="arrow-list">
     <li><span class="arrow">→</span>Il a exactement appliqué le Protocole des liens vrais.</li>
@@ -946,7 +973,7 @@ blockquote cite {
     <li><span class="arrow">→</span>La passerelle en 1 to 1 s'est faite comme expliqué dans le protocole.</li>
   </ul>
 
-  <p class="body-p">Résultat ? Après 7 semaines, il venait de se faire un ami, pas une connaissance, un ami qu'il peut appeler sans raison un dimanche soir.</p>
+  <p class="body-p" style="color: #C8903A;">Résultat ? Après 7 semaines, il venait de se faire un ami, pas une connaissance, un ami qu'il peut appeler sans raison un dimanche soir.</p>
 
   <!-- Placeholder photo Erwan -->
 
@@ -958,9 +985,9 @@ blockquote cite {
 
 
   <!-- SCIENCE -->
-  <h2 class="callout">C'est scientifique</h2>
+  <h2 class="callout"><strong style="text-decoration: underline; text-underline-offset: 6px;">C'est totalement basé sur de la science</strong></h2>
 
-  <p class="body-p">Ça ne peut que marcher parce que c'est de la physique sociale, pas de la pensée positive. En d'autres mots, c'est basé sur de la science.</p>
+  <p class="body-p">Ça ne peut que marcher parce que c'est de la physique sociale, pas de la pensée positive.<br>En d'autres mots, c'est basé sur de la science.</p>
 
   <div class="science-grid">
 
@@ -969,7 +996,7 @@ blockquote cite {
         <div class="science-cite">Robert Zajonc — Université du Michigan, 1968<br>"Attitudinal Effects of Mere Exposure."</div>
         <img class="science-portrait" src="Robert Zajonc - Journal Portrait.png" alt="Robert Zajonc">
       </div>
-      <p class="science-body">Il a mesuré : l'exposition répétée à un stimulus neutre suffit à générer de l'affect positif, sans interaction, sans effort, sans charisme. Erwan a testé. Ça a marché. Le Protocole de Répétition exploite cet effet en construisant une présence régulière dans des environnements filtrés, la familiarité fait le travail que Erwan attribuait à la personnalité.</p>
+      <p class="science-body">Il a mesuré : l'exposition répétée à un stimulus neutre suffit à générer de l'affect positif, sans interaction, sans effort, sans charisme.<br>Erwan a testé.<br>Ça a marché.<br>Le Protocole de Répétition exploite cet effet en construisant une présence régulière dans des environnements filtrés, la familiarité fait le travail que Erwan attribuait à la personnalité.</p>
     </div>
 
     <div class="science-card">
@@ -977,7 +1004,7 @@ blockquote cite {
         <div class="science-cite">Arthur Aron — Université de New York, 1997<br>"The Experimental Generation of Interpersonal Closeness."</div>
         <img class="science-portrait" src="Arthur Aron - Journal Portrait.png" alt="Arthur Aron">
       </div>
-      <p class="science-body">Il a mesuré : 36 questions à divulgation progressive suffisent à créer un sentiment d'intimité réelle entre deux inconnus en moins de 45 minutes. Erwan a appliqué. Ça a marché. La Banque de Questions structure cette progression en 3 niveaux, l'intimité cesse d'être un accident social et devient un protocole reproductible.</p>
+      <p class="science-body">Il a mesuré : 36 questions à divulgation progressive suffisent à créer un sentiment d'intimité réelle entre deux inconnus en moins de 45 minutes.<br>Erwan a appliqué.<br>Ça a marché.<br>La Banque de Questions structure cette progression en 3 niveaux, l'intimité cesse d'être un accident social et devient un protocole reproductible.</p>
     </div>
 
     <div class="science-card">
@@ -985,7 +1012,7 @@ blockquote cite {
         <div class="science-cite">Sidney Jourard — Université de Floride, 1971<br>"The Transparent Self."</div>
         <img class="science-portrait" src="Sidney Jourard - Journal Portrait.png" alt="Sidney Jourard">
       </div>
-      <p class="science-body">Il a mesuré : la divulgation personnelle est réciproque par nature, révéler quelque chose de vrai sur soi déclenche systématiquement une révélation équivalente chez l'autre. Erwan a testé. Ça a marché. Les Partages Calibrés du Module 3 utilisent cette réciprocité comme levier d'ouverture, sans overshare, sans vulnérabilité forcée.</p>
+      <p class="science-body">Il a mesuré : la divulgation personnelle est réciproque par nature, révéler quelque chose de vrai sur soi déclenche systématiquement une révélation équivalente chez l'autre.<br>Erwan a testé.<br>Ça a marché.<br>Les Partages Calibrés du Module 3 utilisent cette réciprocité comme levier d'ouverture, sans overshare, sans vulnérabilité forcée.</p>
     </div>
 
     <div class="science-card">
@@ -993,7 +1020,7 @@ blockquote cite {
         <div class="science-cite">Mark Granovetter — Université de Stanford, 1973<br>"The Strength of Weak Ties."</div>
         <img class="science-portrait" src="Mark Granovetter - Journal Portrait.png" alt="Mark Granovetter">
       </div>
-      <p class="science-body">Il a mesuré : les liens faibles, connaissances distantes, contacts périphériques, sont statistiquement plus utiles pour accéder à de nouvelles opportunités sociales. Erwan a compris. Ça a changé sa stratégie. Le Filtre du Module 1 part de là : les liens faibles sont des zones de test à pression nulle, ils servent à identifier les profils compatibles avant d'investir de l'énergie.</p>
+      <p class="science-body">Il a mesuré : les liens faibles, connaissances distantes, contacts périphériques, sont statistiquement plus utiles pour accéder à de nouvelles opportunités sociales.<br>Erwan a compris.<br>Ça a changé sa stratégie.<br>Le Filtre du Module 1 part de là : les liens faibles sont des zones de test à pression nulle, ils servent à identifier les profils compatibles avant d'investir de l'énergie.</p>
     </div>
 
     <div class="science-card">
@@ -1001,14 +1028,14 @@ blockquote cite {
         <div class="science-cite">Robin Dunbar — Université d'Oxford, 1992<br>"Neocortex size as a constraint on group size in primates."</div>
         <img class="science-portrait" src="Robin Dunbar - Journal Portrait.png" alt="Robin Dunbar">
       </div>
-      <p class="science-body">Il a mesuré : le cerveau humain peut maintenir au maximum 5 liens forts actifs simultanément, au-delà, la qualité relationnelle s'effondre. Erwan a accepté. Ça a recentré ses efforts. Le Cadre Mental du Module 0 s'appuie sur ce chiffre : 2 connexions profondes, c'est scientifiquement suffisant et stratégiquement supérieur à disperser son énergie.</p>
+      <p class="science-body">Il a mesuré : le cerveau humain peut maintenir au maximum 5 liens forts actifs simultanément, au-delà, la qualité relationnelle s'effondre.<br>Erwan a accepté.<br>Ça a recentré ses efforts.<br>Le Cadre Mental du Module 0 s'appuie sur ce chiffre : 2 connexions profondes, c'est scientifiquement suffisant et stratégiquement supérieur à disperser son énergie.</p>
     </div>
 
     <div class="science-card">
       <div class="science-card-header">
         <div class="science-cite">Liad Peperkoorn et al., 2020<br>"The Mere Presence of Others."</div>
       </div>
-      <p class="science-body">Il a mesuré : la présence d'un tiers réduit significativement la profondeur et l'honnêteté des échanges dans une conversation. L'intimité réelle est structurellement impossible en groupe. Erwan a observé. Ça a confirmé son intuition. La Passerelle 1-to-1 du Module 4 est construite sur ce constat : le groupe sert à repérer, le 1-to-1 est l'objectif.</p>
+      <p class="science-body">Il a mesuré : la présence d'un tiers réduit significativement la profondeur et l'honnêteté des échanges dans une conversation.<br>L'intimité réelle est structurellement impossible en groupe.<br>Erwan a observé.<br>Ça a confirmé son intuition.<br>La Passerelle 1-to-1 du Module 4 est construite sur ce constat : le groupe sert à repérer, le 1-to-1 est l'objectif.</p>
     </div>
 
   </div>
@@ -1069,7 +1096,7 @@ blockquote cite {
 
 
   <!-- GUARANTEE -->
-  <h2 class="callout">Tu ne prends aucun risque</h2>
+  <h2 class="callout" style="font-size: 48px;"><strong style="text-decoration: underline; text-underline-offset: 7px;">Tu ne prends aucun risque</strong></h2>
 
   <p class="body-p">Avant de continuer, laisse moi adresser l'éléphant dans la pièce. On est sur internet, un guide, une promesse, c'est pas la première fois que tu vois ça. Tu te dis probablement que c'est peut-être une arnaque, que le protocole ne fonctionne pas, ou même pire qu'il n'existe pas.</p>
 
@@ -1077,8 +1104,11 @@ blockquote cite {
 
   <p class="body-p" style="font-style:italic; color: var(--text-secondary);">(Ce n'est pas du marketing, la loi m'y oblige)</p>
 
+  <div style="text-align: center; margin-bottom: 20px;">
+    <span style="font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--accent); text-decoration: underline; text-underline-offset: 6px;">Double Garantie Liens Profonds</span>
+  </div>
+
   <div class="guarantee-wrap">
-    <span class="guarantee-header">Double Garantie Liens Profonds</span>
     <div class="guarantee-item">
       <div class="guarantee-item-title">Garantie 1 — Droit de rétractation légal</div>
       <div class="guarantee-item-body">14 jours après l'achat, sans justification, sans question. Un email et tu es remboursé.</div>
@@ -1091,32 +1121,35 @@ blockquote cite {
 
   <p class="body-p">Pourquoi j'offre cette garantie ? Parce que je suis confiant dans la méthode, c'est de la science, et ça a marché sur Erwan.</p>
 
-  <p class="body-p">Et quand on y pense vraiment : Le seul vrai risque que tu prends, c'est que dans 8 semaines tu sois exactement là où tu es ce soir.</p>
+  <p class="body-p" style="color: #C8903A;">Et quand on y pense vraiment : Le seul vrai risque que tu prends, c'est que dans 8 semaines tu sois exactement là où tu es ce soir.</p>
 
   <p class="body-p">Dans cet appart, un dimanche à 20h, à regarder le téléphone qui ne sonne pas.</p>
 
 
 
-  <!-- PRICE + CTA 1 -->
+  <!-- PRICE + CTA 1 UNIQUE -->
   <h2 class="callout">Une offre spéciale, uniquement maintenant :</h2>
 
   <p class="body-p">C'est le lancement du Protocole des Liens Vrais.</p>
 
-  <p class="body-p">Je suis confiant dans ce que j'ai construit. C'est pour ça que je lance à <strong>67€</strong> et non au tarif normal.</p>
+  <p class="body-p">Je suis confiant dans ce que j'ai construit. <strong style="text-decoration: underline; text-underline-offset: 4px;">C'est pour ça que je lance à 67€ et non au tarif normal.</strong></p>
 
   <p class="body-p">Le prix monte dès que 100 personnes l'ont obtenu.</p>
 
-  <p class="body-p">La logique est simple : à 100 ventes, j'ai assez de retours pour justifier un prix plus élevé. Et vu le nombre de personnes qui tombent sur cette page, les 100 premiers slots ne traîneront pas.</p>
+  <p class="body-p">La logique est simple : à 100 ventes, j'ai assez de retours pour justifier un prix plus élevé. Et vu le nombre de personnes qui tombent sur cette page, <span style="color: #C8903A;">les 100 premiers slots ne traîneront pas.</span></p>
 
   <p class="body-p">Si tu lis ça aujourd'hui, t'as le prix de lancement. Demain c'est possible qu'il ne soit plus à ce prix.</p>
 
   <!-- OFFER BOX -->
+  <div style="text-align: center; margin: 48px 0 24px;">
+    <span style="font-family: var(--font-display); font-size: 42px; font-weight: 700; color: var(--accent); text-decoration: underline; text-underline-offset: 6px;">Le Protocole des Liens Vrais</span>
+  </div>
   <div style="border: 1px solid var(--accent-border); border-radius: 6px; background: var(--bg-surface); padding: 52px 48px; margin: 40px 0; position: relative; overflow: hidden;">
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; height: 50%; background: radial-gradient(ellipse, rgba(200,144,58,0.08) 0%, transparent 70%); filter: blur(80px); pointer-events: none;"></div>
 
     <!-- Titre produit -->
     <div style="text-align: center; margin-bottom: 8px; position: relative; z-index: 1;">
-      <span style="font-family: var(--font-display); font-size: 36px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent);">Le Protocole des Liens Vrais</span>
+      <span style="font-family: var(--font-display); font-size: 36px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent);">Je veux enfin des vrais amis qui me conviennent</span>
     </div>
 
     <!-- Image bundle -->
@@ -1129,11 +1162,12 @@ blockquote cite {
     <div style="text-align: center; margin-bottom: 32px; position: relative; z-index: 1;">
       <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.15em; color: var(--text-secondary); text-decoration: line-through; margin-bottom: 6px;">Prix normal</div>
       <span style="font-family: var(--font-display); font-size: 72px; font-weight: 600; color: var(--accent); line-height: 1;">67€</span>
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); margin-top: 10px; letter-spacing: 0.05em;">Le prix peut augmenter du jour au lendemain, au vu du volume que cette page accueillera.</div>
     </div>
 
     <!-- CTA -->
     <div style="text-align: center; margin-bottom: 20px; position: relative; z-index: 1;">
-      <a href="checkout.html" class="cta-btn">&rarr; Obtenir le Protocole des Liens Vrais</a>
+      <a href="checkout.html" class="cta-btn">&rarr; Obtenir <span style="text-decoration: underline; text-underline-offset: 3px;">Le Protocole des Liens Vrais</span></a>
     </div>
 
     <!-- Accès immédiat + garantie -->
@@ -1179,7 +1213,7 @@ blockquote cite {
 
 
   <!-- FAQ -->
-  <span class="section-label">FAQ</span>
+  <h2 class="callout" style="color: #C8903A; margin-top: 100px; text-align: center;">Tu as des questions en plus ?</h2>
 
   <details class="faq-item">
     <summary>C'est quoi exactement le format ?</summary>
@@ -1239,6 +1273,7 @@ blockquote cite {
     <div style="text-align: center; margin-bottom: 32px; position: relative; z-index: 1;">
       <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.15em; color: var(--text-secondary); text-decoration: line-through; margin-bottom: 6px;">Prix normal</div>
       <span style="font-family: var(--font-display); font-size: 72px; font-weight: 600; color: var(--accent); line-height: 1;">67€</span>
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); margin-top: 10px; letter-spacing: 0.05em;">Le prix peut augmenter du jour au lendemain, au vu du volume que cette page accueillera.</div>
     </div>
 
     <!-- CTA -->
