@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Le Protocole des Liens Vrais — Connexions Silencieuses</title>
+<title>Le Protocole des Liens Vrais — Pour les introvertis sans amis</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IBM+Plex+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<script async defer src="https://js.whop.com/static/checkout/loader.js"></script>
 
 <style>
 :root {
@@ -21,28 +20,57 @@
   --text-secondary: #8A8279;
   --text-ghost:     #3A3530;
   --accent:         #C8903A;
-  --accent-dim:     rgba(200, 144, 58, 0.10);
-  --accent-border:  rgba(200, 144, 58, 0.25);
+  --accent-dim:     rgba(200,144,58,0.10);
+  --accent-border:  rgba(200,144,58,0.25);
   --font-display:   'Cormorant Garamond', Georgia, serif;
   --font-body:      'Lora', Georgia, serif;
   --font-mono:      'IBM Plex Mono', 'Courier New', monospace;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
-  min-height: 100vh;
-  background: #050505;
+  background: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Amber top bar */
+.sales-page {
+  position: relative;
+}
+
+.sales-page::before,
+.sales-page::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(120px);
+}
+
+.sales-page::before {
+  width: 600px;
+  height: 600px;
+  top: 10vh;
+  left: -200px;
+  background: radial-gradient(ellipse, rgba(200,144,58,0.12) 0%, transparent 70%);
+}
+
+.sales-page::after {
+  width: 500px;
+  height: 500px;
+  top: 55vh;
+  right: -150px;
+  background: radial-gradient(ellipse, rgba(200,144,58,0.10) 0%, transparent 70%);
+}
+
+.sales-page > * {
+  position: relative;
+  z-index: 1;
+}
+
 body::before {
   content: '';
   display: block;
@@ -55,301 +83,1229 @@ body::before {
   z-index: 100;
 }
 
-.page-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 24px 80px;
-}
-
-.container {
+.sales-page {
   width: 100%;
-  max-width: 1080px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: start;
+  padding: 88px 8vw 120px;
 }
 
-/* ── LEFT COLUMN ── */
-.col-product {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.brand-tag {
+/* ── LABELS ── */
+.for-tag {
   font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 24px;
-}
-
-.product-title {
-  font-family: var(--font-display);
-  font-size: 52px;
-  font-weight: 300;
-  line-height: 1.1;
   color: var(--text-primary);
-  margin-bottom: 20px;
-}
-
-.product-title em {
-  font-style: italic;
-  font-weight: 400;
-}
-
-.product-subtitle {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.75;
-  color: var(--text-secondary);
-  margin-bottom: 40px;
-  max-width: 400px;
-}
-
-.book-mockup {
-  width: 100%;
-  max-width: 300px;
-  margin-bottom: 44px;
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.7));
-}
-
-.product-body {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.75;
-  color: var(--text-secondary);
+  background: var(--accent);
+  display: block;
   margin-bottom: 28px;
-  max-width: 420px;
 }
 
-.benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-
-.benefit-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.benefit-marker {
-  font-family: var(--font-mono);
-  font-size: 8px;
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.1em;
-  flex-shrink: 0;
-  margin-top: 5px;
-}
-
-.benefit-text {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--text-primary);
-}
-
-.separator {
-  width: 32px;
-  height: 1px;
-  background: var(--border);
-  margin-bottom: 24px;
-}
-
-.social-proof {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--text-ghost);
-  line-height: 1.8;
-}
-
-/* ── RIGHT COLUMN ── */
-
-.checkout-panel {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-}
-
-.checkout-header {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.checkout-label {
+.section-label {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--text-ghost);
+  display: block;
+  margin-bottom: 28px;
 }
 
-.checkout-secure {
+/* ── HEADLINE ── */
+.headline {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 60px;
+}
+
+.headline .hl {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── SEPARATOR ── */
+.sep {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 52px 0;
+}
+
+/* ── BODY TEXT ── */
+.body-p {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--text-primary);
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.body-p strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.body-p em {
+  font-style: italic;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1.25;
+  text-align: center;
+  margin: 72px 0 40px;
+}
+
+/* ── BLOCKQUOTE ── */
+blockquote {
+  border-top: 2px solid var(--accent-border);
+  border-bottom: 2px solid var(--accent-border);
+  text-align: center;
+  padding: 24px 28px;
+  margin: 52px 0;
+  background: var(--bg-surface);
+  border-radius: 0 2px 2px 0;
+}
+
+blockquote p {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+
+blockquote cite {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  font-style: normal;
+  display: block;
+  margin-top: 14px;
+}
+
+/* ── ARROW LIST ── */
+.arrow-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 40px auto;
+  max-width: 680px;
+}
+
+.arrow-list li {
+  display: flex;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.arrow {
+  color: var(--accent);
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* ── MECHANISM GRID ── */
+.mechanism-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin: 32px 0;
+}
+
+.mech-panel {
+  padding: 48px 52px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.mech-panel.is-panel {
+  border-color: var(--accent-border);
+  background: var(--accent-dim);
+}
+
+.mech-panel-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-ghost);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.is-panel .mech-panel-label {
+  color: var(--accent);
+}
+
+.mech-panel ul {
+  list-style: none;
+}
+
+.mech-panel li {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.is-panel li {
+  color: var(--text-primary);
+}
+
+.mech-panel li:last-child {
+  margin-bottom: 0;
+}
+
+/* ── MODULES ── */
+.module-block {
+  border-top: 1px solid var(--border);
+  padding: 52px 0;
+  display: flex;
+  gap: 64px;
+  align-items: center;
+}
+
+.module-block:last-of-type {
+  border-bottom: 1px solid var(--border);
+}
+
+.module-block.img-right {
+  flex-direction: row-reverse;
+}
+
+.module-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.module-img {
+  flex-shrink: 0;
+  width: 320px;
+  position: relative;
+}
+
+.module-img::before {
+  content: '';
+  position: absolute;
+  inset: -28px;
+  background: radial-gradient(ellipse at center, rgba(200,144,58,0.22) 0%, transparent 68%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.module-img img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.module-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.module-title {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.module-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-primary);
+}
+
+.module-body p {
+  margin-bottom: 18px;
+}
+
+.module-body p:last-child {
+  margin-bottom: 0;
+}
+
+.module-body strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── PROOF ── */
+.proof-name {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* ── OBJECTIONS ── */
+.objection-block {
+  border-top: 1px solid var(--border);
+  padding: 48px 0;
+}
+
+.objection-q {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 28px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.objection-a {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--text-primary);
+}
+
+.objection-a p {
+  margin-bottom: 14px;
+}
+
+.objection-a p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── GUARANTEE ── */
+.guarantee-wrap {
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  border-radius: 2px;
+  padding: 32px;
+  margin: 36px 0;
+}
+
+.guarantee-header {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 24px;
+}
+
+.guarantee-item {
+  padding: 20px 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.guarantee-item:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.guarantee-item-title {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.guarantee-item-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text-primary);
+}
+
+/* ── CTA ── */
+.cta-wrap {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #0B0B0B;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 20px 44px;
+  border-radius: 2px;
+  font-weight: 500;
+  line-height: 1;
+  transition: opacity 0.15s;
+}
+
+.cta-btn:hover {
+  opacity: 0.88;
+}
+
+.cta-sub {
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.08em;
   color: var(--text-ghost);
+  margin-top: 12px;
+  line-height: 1.8;
+}
+
+/* ── FAQ ── */
+.faq-item {
+  border-top: 1px solid var(--border);
+}
+
+.faq-item summary {
+  list-style: none;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  gap: 20px;
+  padding: 26px 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+  user-select: none;
 }
 
-.checkout-secure::before {
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--accent);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-a {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  padding-bottom: 26px;
+}
+
+/* ── SCIENCE ── */
+.science-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 48px 0;
+}
+
+.science-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px 32px;
+  overflow: hidden;
+}
+
+.science-card::before {
   content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4CAF50;
-  opacity: 0.7;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
-.checkout-embed-wrap {
+.science-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.science-portrait {
   width: 100%;
-  padding: 8px;
+  max-height: 200px;
+  object-fit: contain;
+  object-position: center;
+  filter: grayscale(100%);
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  display: block;
+  background: var(--bg-surface);
 }
 
-.checkout-embed-wrap iframe {
-  width: 100% !important;
-  min-height: 900px;
-  border: none !important;
-  display: block;
+.science-cite {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.science-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+
+/* ── CLOSING ── */
+.closing-line {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-widget {
+  position: fixed;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+}
+
+#scroll-label {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+#scroll-track {
+  width: 4px;
+  height: 220px;
+  background: #1C1C1C;
+}
+
+#scroll-fill {
+  width: 100%;
+  height: 0%;
+  background: var(--accent);
+  transition: height 0.1s linear;
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 800px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .product-title {
-    font-size: 40px;
-  }
-
-  .col-product {
-    align-items: center;
-    text-align: center;
-  }
-
-  .product-subtitle {
-    max-width: 100%;
-  }
-
-  .book-mockup {
-    max-width: 220px;
-  }
-
-  .benefit-item {
-    justify-content: center;
-    text-align: left;
-  }
-
-  .separator {
-    margin-left: auto;
-    margin-right: auto;
-  }
+@media (max-width: 640px) {
+  .sales-page { padding: 60px 5vw 80px; }
+  .headline { font-size: 32px; }
+  .callout { font-size: 24px; }
+  .body-p { font-size: 16px; }
+  .arrow-list li { font-size: 16px; }
+  .module-block { flex-direction: column !important; gap: 36px; }
+  .module-img { width: 100%; }
+  .module-title { font-size: 26px; }
+  .cta-btn { padding: 18px 28px; font-size: 10px; }
+  .guarantee-wrap { padding: 24px 20px; }
 }
 </style>
 </head>
 <body>
 
-<div class="page-wrapper">
-  <div class="container">
+<div class="sales-page">
 
-    <!-- LEFT — Product -->
-    <div class="col-product">
-      <div class="brand-tag">Connexions Silencieuses</div>
+  <!-- ambient glows -->
+  <div style="position:absolute;pointer-events:none;z-index:0;width:700px;height:700px;top:30%;right:-250px;background:radial-gradient(ellipse,rgba(200,144,58,0.09) 0%,transparent 65%);filter:blur(100px);border-radius:50%;"></div>
+  <div style="position:absolute;pointer-events:none;z-index:0;width:600px;height:600px;top:60%;left:-200px;background:radial-gradient(ellipse,rgba(200,144,58,0.08) 0%,transparent 65%);filter:blur(100px);border-radius:50%;"></div>
+  <div style="position:absolute;pointer-events:none;z-index:0;width:500px;height:500px;top:80%;right:-150px;background:radial-gradient(ellipse,rgba(200,144,58,0.07) 0%,transparent 65%);filter:blur(90px);border-radius:50%;"></div>
 
-      <h1 class="product-title">
-        Le Protocole des<br>
-        <em>Liens Vrais</em>
-      </h1>
+  <!-- HEADER -->
+  <div style="text-align: center; margin-bottom: 28px;">
+    <span class="for-tag" style="display: inline-block; border: 2px dashed var(--accent); padding: 8px 20px; margin-bottom: 0;">Pour les introvertis sans amis</span>
+  </div>
 
-      <p class="product-subtitle">
-        Un système pour passer de zéro cercle social à 2 connexions réelles — sans small talk, sans te forcer à être quelqu'un d'autre.
-      </p>
+  <h1 class="headline">Comment passer du &laquo;&nbsp;<span class="hl">néant social</span>&nbsp;&raquo; à <span class="hl">2 personnes que tu peux appeler à 23h</span> &mdash; en 56 jours et 90&nbsp;min/semaine</h1>
+  <p style="font-family: var(--font-mono); font-size: 20px; letter-spacing: 0.12em; color: var(--accent); text-align: center; margin-top: -40px; margin-bottom: 48px;">(Sans forcer une seule interaction)</p>
 
-      <img class="book-mockup" src="Image 1.png" alt="Le Protocole des Liens Vrais">
+  <div style="margin: 0 auto 60px; border: 2px solid var(--accent); border-radius: 3px; overflow: hidden; line-height: 0; max-width: 600px;">
+    <img src="header.jpg" alt="" style="width: 100%; display: block; object-fit: cover;">
+  </div>
 
-      <p class="product-body">
-        Tu n'as pas besoin de plus d'interactions. Tu as besoin des bonnes — construites méthodiquement, à basse énergie, avec les rares personnes qui méritent ta profondeur.
-      </p>
 
-      <div class="benefits">
-        <div class="benefit-item">
-          <span class="benefit-marker">01</span>
-          <span class="benefit-text">Un filtre pour arrêter de perdre ton énergie dans les mauvais environnements avec les mauvaises personnes.</span>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-marker">02</span>
-          <span class="benefit-text">Un protocole de répétition qui construit la familiarité sans effort de performance sociale.</span>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-marker">03</span>
-          <span class="benefit-text">Une banque de 40 questions calibrées pour créer une intimité réelle — dès la deuxième conversation.</span>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-marker">04</span>
-          <span class="benefit-text">Un plan d'action sur 8 semaines, 90 minutes par semaine. Pas plus.</span>
-        </div>
-      </div>
 
-      <div class="separator"></div>
+  <!-- AGITATION -->
+  <h2 class="callout">Toi actuellement :</h2>
 
-      <div class="social-proof">
-        Format PDF · 43 pages · Accès immédiat<br>
-        Construit sur de la recherche en psychologie sociale. Zéro conseil de coach.
+  <p class="body-p">Tu es assis dans ton T2 un dimanche soir à 20h.</p>
+
+  <p class="body-p">Tu as travaillé de chez toi toute la semaine. Tu n'as parlé à personne depuis vendredi, hormis le gars d'Uber Eats.</p>
+
+  <p class="body-p">Ton téléphone n'a pas sonné. Pas un message. Pas une notification.</p>
+
+  <p class="body-p">Tu ouvres YouTube. Tu tombes sur une vidéo d'un groupe de potes qui partent en road trip dans le Sud. Trois semaines de van, de bières fraîches et de rires idiots.</p>
+
+  <p class="body-p">Tu la regardes jusqu'à la fin.</p>
+
+  <p class="body-p">Pas parce que le road trip t'intéresse. Parce que voir des gens exister ensemble c'est le seul truc qui ressemble à de la compagnie ce soir.</p>
+
+  <p class="callout"><strong>C'est le néant absolu.</strong></p>
+
+  <p class="body-p">Et le pire, c'est que c'est pas la première fois.</p>
+
+  <p class="body-p">C'est tous les week-ends.</p>
+
+  <p class="body-p">Tu te dis que dans 10 ans tu auras 38 ans. Que tu seras toujours dans cet appart, avec ce setup parfait, ce salaire correct, et personne à qui envoyer un message un mardi sans raison.</p>
+
+  <blockquote>
+    <p>"J'ai l'impression d'avoir tout raté. Il est clair que si je ne change rien à ma vie, je serai toujours seul à 40 ans."</p>
+    <cite>Posté sur r/france à 2h47 du matin. Valdeinar, 29 ans. Développeur. Télétravail.</cite>
+  </blockquote>
+
+  <div style="margin: 32px 0; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+    <img src="tout raté.png" alt="Post Reddit - tout raté" style="width: 100%; max-width: 820px; border-radius: 4px; border: 1px solid var(--border); display: block;">
+    <img src="suite tout raté.png" alt="Post Reddit - suite" style="width: 100%; max-width: 820px; border-radius: 4px; border: 1px solid var(--border); display: block;">
+  </div>
+
+  <p class="body-p">Ca pouvait être toi.</p>
+
+
+
+  <!-- EST-CE QUE C'EST TOI -->
+  <h2 class="callout">Tu te reconnais ?</h2>
+
+  <p class="body-p">Peut-être que tu as :</p>
+
+  <ul class="arrow-list">
+    <li><span class="arrow">→</span>Téléchargé Bumble BFF, scrollé 20 minutes, et désinstallé parce que c'était trop bizarre</li>
+    <li><span class="arrow">→</span>Forcé une sortie afterwork avec les collègues Slack, souri pendant 2 heures, et eu envie de te coucher dès que t'es rentré tellement t'étais vidé</li>
+    <li><span class="arrow">→</span>Essayé un club, sport, jeu de société, peu importe ; et senti que t'étais le seul à pas avoir le bon mode d'accès social</li>
+    <li><span class="arrow">→</span>Vu un psy qui t'a prescrit des anxiolytiques pour "gérer le stress social" sans que ça règle le problème du dimanche soir vide</li>
+    <li><span class="arrow">→</span>Lu des threads entiers sur "comment se faire des amis adulte", mis en favoris 7 conseils du type "sois toi-même", et rien appliqué parce que t'avais pas d'énergie</li>
+  </ul>
+
+  <p class="body-p">À coups d'échecs comme ça, tu as fini par croire que c'était de ta faute.</p>
+
+  <p class="body-p">Que t'étais fondamentalement repoussant. Câblé différemment. Impossible de te faire des amis.</p>
+
+  <p class="body-p"><strong style="color: var(--accent);">Mais c'est vraiment pas de ta faute.</strong></p>
+
+  <p class="body-p">Et je dis pas ça juste pour le marketing.</p>
+
+  <p class="body-p">Je le dis parce que chaque conseil qu'on t'a donné : les clubs, les sorties, les afterworks, les "sois plus ouvert", <strong><strong>a été conçu pour un cerveau qui fonctionne à la dopamine.</strong></strong></p>
+
+  <p class="body-p">Le tien, le cerveau des introvertis, fonctionne à l'acétylcholine. (c'est prouvé scientifiquement)</p>
+
+  <p class="body-p">Ce sont des systèmes neurochimiques opposés. T'as appliqué le mode d'emploi de quelqu'un d'autre à ton propre cerveau. Pendant des années.</p>
+
+  <p class="body-p">Ce n'est pas un défaut. C'est un mauvais outil pour ton cerveau.</p>
+
+
+
+  <!-- LE MÉCANISME -->
+  <h2 class="callout"><strong style="text-decoration: underline; text-underline-offset: 6px;">La méthode câblée uniquement pour ton cerveau d'introverti</strong></h2>
+
+  <p class="body-p">Et cette méthode câblée uniquement pour toi c'est : <strong style="color: var(--accent); text-decoration: underline; text-underline-offset: 4px;">Le Protocole des Liens Vrais</strong>.</p>
+
+  <p class="body-p">Si tu lis ces lignes, il reste quelque chose en toi.</p>
+
+  <p class="body-p">Pas de l'espoir naïf. Juste une voix, quelque part, qui dit que ça ne peut pas continuer comme ça indéfiniment.</p>
+
+  <p class="body-p">Tu as raison.</p>
+
+  <p class="body-p">Je m'appelle [Prénom]. Et je suis introverti à 96%.<br>
+  Pas "un peu réservé". Pas "timide en soirée".<br>
+  96% sur chaque test de personnalité que j'ai passé.<br>
+  Le genre de score qui fait dire aux gens "ah ouais quand même" avant de changer de sujet.</p>
+
+  <p class="body-p">Pendant des années, j'ai utilisé ce chiffre comme une explication. Presque une identité.<br>
+  C'est ma nature. Je suis câblé comme ça. Rien à faire.</p>
+
+  <p class="body-p">Et puis un dimanche soir, comme beaucoup de tes dimanches soirs, j'ai regardé autour de moi.<br>
+  L'appartement vide. Le téléphone sans notification. Le silence qui pèse rien quand t'en as besoin, et tout quand t'en veux plus.</p>
+
+  <p class="body-p">Le désespoir a été plus fort que mon introversion.</p>
+
+  <p class="body-p">Alors j'ai cherché.<br>
+  Pas des podcasts de développement personnel avec des mecs qui sourient trop.<br>
+  Pas des coachs en vie qui t'expliquent qu'il faut "rayonner son énergie".<br>
+  Des études. Des chercheurs. Des mécanismes réels sur comment les liens humains se forment.</p>
+
+  <p class="body-p">J'ai appliqué. J'ai échoué. J'ai recommencé différemment.<br>
+  J'ai croisé les travaux de Zajonc sur l'exposition répétée, d'Aron sur l'intimité comme protocole, de Hall sur le temps exact qu'il faut pour qu'une amitié devienne réelle.<br>
+  Et progressivement, quelque chose a fonctionné.</p>
+
+  <p class="body-p">Ce que j'ai construit ne ressemble à rien de ce que t'as essayé avant.<br>
+  Pas parce que c'est magique. Parce que c'est construit différemment depuis le début.</p>
+
+  <p class="body-p">Toutes les méthodes que t'as croisées partent du même postulat : t'as un problème de personnalité à corriger.<br>
+  Sois plus ouvert. Sois plus présent. Sois plus, globalement.<br>
+  Celle-ci part d'un postulat opposé.</p>
+
+  <p class="body-p"><strong>Tu n'es pas le problème. Tu n'as pas de défaut de personnalité.<br>
+  Tu as un défaut de système.</strong></p>
+
+  <p class="body-p">Le Protocole des Liens Vrais ne te demande pas de devenir quelqu'un d'autre.<br>
+  Il te donne une architecture relationnelle construite pour fonctionner avec exactement le type de cerveau que t'as déjà.</p>
+
+  <p class="body-p">Le système exact pour <strong>passer de zéro connexion réelle à 2 personnes que tu peux appeler à 23h, en 56 jours et 90 min/semaine</strong>, sans forcer une seule interaction, sans jouer l'extraverti, sans te vider.</p>
+
+  <div style="margin: 40px 0; text-align: center; position: relative;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(ellipse at center, rgba(200,144,58,0.75) 0%, rgba(200,144,58,0.35) 40%, transparent 70%); filter: blur(60px); pointer-events: none; z-index: 0;"></div>
+    <img src="visual product.png" alt="Le Protocole des Liens Vrais" style="max-width: 800px; width: 100%; display: inline-block; position: relative; z-index: 1;">
+  </div>
+
+  <div class="mechanism-grid">
+
+    <!-- PAS -->
+    <div style="display: flex; flex-direction: column;">
+      <div style="font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px; text-align: center;">Ce que ce système n'est pas</div>
+      <div class="mech-panel" style="flex: 1; position: relative; overflow: hidden; border: 1px solid rgba(180,40,40,0.3); background: #0B0B0B;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(ellipse at center, rgba(180,30,30,0.55) 0%, rgba(140,20,20,0.25) 50%, transparent 75%); filter: blur(60px); pointer-events: none;"></div>
+        <ul style="position: relative; z-index: 1;">
+          <li>Un cours de confiance en soi</li>
+          <li>Un programme pour devenir "plus sociable"</li>
+          <li>Une injonction à "sortir de ta zone de confort"</li>
+        </ul>
       </div>
     </div>
 
-    <!-- RIGHT — Checkout -->
-    <div class="col-checkout">
-      <div class="checkout-panel">
-        <div class="checkout-header">
-          <span class="checkout-label">Accès au guide</span>
-          <span class="checkout-secure">Paiement sécurisé</span>
+    <!-- EST -->
+    <div style="display: flex; flex-direction: column;">
+      <div style="font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--accent); margin-bottom: 16px; text-align: center;">Ce que ce système est</div>
+      <div class="mech-panel is-panel" style="flex: 1; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; height: 90%; background: radial-gradient(ellipse at center, rgba(200,144,58,0.55) 0%, rgba(200,144,58,0.2) 50%, transparent 75%); filter: blur(50px); pointer-events: none;"></div>
+        <ul style="position: relative; z-index: 1;">
+          <li>Une architecture relationnelle construite spécifiquement pour ton câblage.</li>
+          <li>Filtrer au lieu de forcer. Répéter à basse intensité. Créer de la profondeur par micro-vulnérabilité. Convertir du collectif au 1-to-1.</li>
+          <li>Quatre piliers. Un résultat mesurable. Aucun effort de performance sociale.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- MODULES -->
+  <h2 class="callout">À l'intérieur de cette méthode</h2>
+
+  <!-- Module 0 : image gauche -->
+  <div class="module-block">
+    <div class="module-img">
+      <img src="modules images/cadre mental.png" alt="Le Cadre Mental">
+    </div>
+    <div class="module-content">
+      <span class="module-label">Module 0</span>
+      <h3 class="module-title">Le Cadre Mental</h3>
+      <div class="module-body">
+        <p>Tu lis les données neuro sur l'acétylcholine.</p>
+        <p>Tu comprends pourquoi chaque conseil qu'on t'a donné était conçu pour un cerveau différent du tien.</p>
+        <p>Tu sors de ce module avec une conviction : tu n'as pas besoin de te réparer. Tu as besoin d'un système calibré pour toi.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 1 : image droite -->
+  <div class="module-block img-right">
+    <div class="module-img">
+      <img src="modules images/filtre.png" alt="Le Filtre">
+    </div>
+    <div class="module-content">
+      <span class="module-label">Module 1</span>
+      <h3 class="module-title">Le Filtre</h3>
+      <div class="module-body">
+        <p>Tu cartographies tes environnements actuels avec la grille d'évaluation.</p>
+        <p>Tu identifies en moins d'une heure quels contextes te coûtent de l'énergie et lesquels créent naturellement de la proximité.</p>
+        <p>À la fin, tu as une liste de 2-3 environnements à haute densité de profils compatibles.</p>
+        <p>Tu arrêtes de gaspiller ton énergie dans des afterworks de Kévin-Alexandre.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 2 : image gauche -->
+  <div class="module-block">
+    <div class="module-img">
+      <img src="modules images/protocole de répétition.png" alt="Le Protocole de Répétition">
+    </div>
+    <div class="module-content">
+      <span class="module-label">Module 2</span>
+      <h3 class="module-title">Le Protocole de Répétition</h3>
+      <div class="module-body">
+        <p>Tu construis ta routine 90 min/semaine avec le template hebdomadaire.</p>
+        <p>Tu n'as rien à "dire" de particulier. La répétition fait le travail.</p>
+        <p>Au bout de 3 semaines, certaines personnes commencent à te reconnaître, à te chercher.</p>
+        <p>La familiarité s'installe sans effort conscient.</p>
+        <p>Robert Zajonc a démontré ça en 1968 : <strong>la simple exposition répétée augmente l'affinité.</strong></p>
+        <p>Ta présence régulière est plus puissante que ton éloquence.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 3 : image droite -->
+  <div class="module-block img-right">
+    <div class="module-img">
+      <img src="modules images/questions de profondeur.png" alt="Les Questions de Profondeur">
+    </div>
+    <div class="module-content">
+      <span class="module-label">Module 3</span>
+      <h3 class="module-title">Les Questions de Profondeur</h3>
+      <div class="module-body">
+        <p>Tu utilises la banque de 40 questions, 3 niveaux calibrés.</p>
+        <p>Tu commences au Niveau 1 pour tester l'ouverture.</p>
+        <p>Tu montes au Niveau 2 quand tu sens la réponse qui va au-delà du surface.</p>
+        <p>À la fin de ce module, tu as des conversations que la plupart des introvertis n'ont jamais, sans avoir eu à "performer" quoi que ce soit.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 4 : image gauche -->
+  <div class="module-block">
+    <div class="module-img">
+      <img src="modules images/1to1.png" alt="La Passerelle 1-to-1">
+    </div>
+    <div class="module-content">
+      <span class="module-label">Module 4</span>
+      <h3 class="module-title">La Passerelle 1-to-1</h3>
+      <div class="module-body">
+        <p>Tu appliques le protocole de conversion en 3 étapes : groupe &rarr; conversation solo &rarr; rituel récurrent.</p>
+        <p>Tu utilises les scripts exacts, formulés pour ne jamais sembler désespéré ni forcé.</p>
+        <p>Au bout de 8 semaines, tu as 1 ou 2 connexions qui sont devenues réelles.</p>
+        <p>Pas des connaissances. Des gens qui t'envoient un message un mardi sans raison.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- SOCIAL PROOF -->
+  <h2 class="callout">Ce n'est pas du bullshit, ça marche réellement</h2>
+
+  <p class="body-p">Laisse moi te parler de Erwan.</p>
+
+  <div style="text-align: center; margin: 0 auto 40px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);">
+    <div style="position: absolute; inset: -30px; background: radial-gradient(ellipse at center, rgba(200,144,58,0.18) 0%, transparent 70%); pointer-events: none;"></div>
+    <img src="Erwan jeune portrait noir et blanc.png" alt="Erwan" style="width: 520px; border-radius: 4px; display: block; position: relative; z-index: 1;">
+  </div>
+
+  <span class="proof-name">Erwan, 20 ans, Bordeaux</span>
+
+  <p class="body-p">Erwan, 20 ans, stagiaire en remote depuis Bordeaux, est passé d'un dimanche soir à regarder les vlogs d'Août de Lena Situations pour l'illusion de la compagnie, à une personne dans sa vie qu'il peut appeler sans raison valable. Il a voulu s'arrêter à un seul lien. Ça lui suffit pour le moment.</p>
+
+  <p class="body-p">Comment il a fait ?</p>
+
+  <ul class="arrow-list">
+    <li><span class="arrow">→</span>Il a exactement appliqué le Protocole des liens vrais.</li>
+    <li><span class="arrow">→</span>Il a compris que son cerveau marchait différemment, pas comme un extraverti.</li>
+    <li><span class="arrow">→</span>Il est ressorti du module 1 avec l'audit des environnements à attaquer. Son environnement de prédilection était un groupe de génie culturel.</li>
+    <li><span class="arrow">→</span>Il s'y est pointé régulièrement, comme indiqué dans le module 2.</li>
+    <li><span class="arrow">→</span>Il y a donc évidemment trouvé quelqu'un de compatible sur qui il a appliqué la banque des 40 questions.</li>
+    <li><span class="arrow">→</span>La passerelle en 1 to 1 s'est faite comme expliqué dans le protocole.</li>
+  </ul>
+
+  <p class="body-p">Résultat ? Après 7 semaines, il venait de se faire un ami, pas une connaissance, un ami qu'il peut appeler sans raison un dimanche soir.</p>
+
+  <!-- Placeholder photo Erwan -->
+
+  <blockquote>
+    <p>"J'ai appliqué le Protocole et surtout le module 3 mécaniquement, sans y croire. Au bout de 3 semaines le mec du groupe de génie culture m'écrivait régulièrement, et pas pour parler de culture générale. Je n'avais rien fait de spécial. J'avais juste appliqué le protocole."</p>
+    <cite>Erwan, 20 ans, Bordeaux</cite>
+  </blockquote>
+
+
+
+  <!-- SCIENCE -->
+  <h2 class="callout">C'est scientifique</h2>
+
+  <p class="body-p">Ça ne peut que marcher parce que c'est de la physique sociale, pas de la pensée positive. En d'autres mots, c'est basé sur de la science.</p>
+
+  <div class="science-grid">
+
+    <div class="science-card">
+      <div class="science-card-header">
+        <div class="science-cite">Robert Zajonc — Université du Michigan, 1968<br>"Attitudinal Effects of Mere Exposure."</div>
+        <img class="science-portrait" src="Robert Zajonc - Journal Portrait.png" alt="Robert Zajonc">
+      </div>
+      <p class="science-body">Il a mesuré : l'exposition répétée à un stimulus neutre suffit à générer de l'affect positif, sans interaction, sans effort, sans charisme. Erwan a testé. Ça a marché. Le Protocole de Répétition exploite cet effet en construisant une présence régulière dans des environnements filtrés, la familiarité fait le travail que Erwan attribuait à la personnalité.</p>
+    </div>
+
+    <div class="science-card">
+      <div class="science-card-header">
+        <div class="science-cite">Arthur Aron — Université de New York, 1997<br>"The Experimental Generation of Interpersonal Closeness."</div>
+        <img class="science-portrait" src="Arthur Aron - Journal Portrait.png" alt="Arthur Aron">
+      </div>
+      <p class="science-body">Il a mesuré : 36 questions à divulgation progressive suffisent à créer un sentiment d'intimité réelle entre deux inconnus en moins de 45 minutes. Erwan a appliqué. Ça a marché. La Banque de Questions structure cette progression en 3 niveaux, l'intimité cesse d'être un accident social et devient un protocole reproductible.</p>
+    </div>
+
+    <div class="science-card">
+      <div class="science-card-header">
+        <div class="science-cite">Sidney Jourard — Université de Floride, 1971<br>"The Transparent Self."</div>
+        <img class="science-portrait" src="Sidney Jourard - Journal Portrait.png" alt="Sidney Jourard">
+      </div>
+      <p class="science-body">Il a mesuré : la divulgation personnelle est réciproque par nature, révéler quelque chose de vrai sur soi déclenche systématiquement une révélation équivalente chez l'autre. Erwan a testé. Ça a marché. Les Partages Calibrés du Module 3 utilisent cette réciprocité comme levier d'ouverture, sans overshare, sans vulnérabilité forcée.</p>
+    </div>
+
+    <div class="science-card">
+      <div class="science-card-header">
+        <div class="science-cite">Mark Granovetter — Université de Stanford, 1973<br>"The Strength of Weak Ties."</div>
+        <img class="science-portrait" src="Mark Granovetter - Journal Portrait.png" alt="Mark Granovetter">
+      </div>
+      <p class="science-body">Il a mesuré : les liens faibles, connaissances distantes, contacts périphériques, sont statistiquement plus utiles pour accéder à de nouvelles opportunités sociales. Erwan a compris. Ça a changé sa stratégie. Le Filtre du Module 1 part de là : les liens faibles sont des zones de test à pression nulle, ils servent à identifier les profils compatibles avant d'investir de l'énergie.</p>
+    </div>
+
+    <div class="science-card">
+      <div class="science-card-header">
+        <div class="science-cite">Robin Dunbar — Université d'Oxford, 1992<br>"Neocortex size as a constraint on group size in primates."</div>
+        <img class="science-portrait" src="Robin Dunbar - Journal Portrait.png" alt="Robin Dunbar">
+      </div>
+      <p class="science-body">Il a mesuré : le cerveau humain peut maintenir au maximum 5 liens forts actifs simultanément, au-delà, la qualité relationnelle s'effondre. Erwan a accepté. Ça a recentré ses efforts. Le Cadre Mental du Module 0 s'appuie sur ce chiffre : 2 connexions profondes, c'est scientifiquement suffisant et stratégiquement supérieur à disperser son énergie.</p>
+    </div>
+
+    <div class="science-card">
+      <div class="science-card-header">
+        <div class="science-cite">Liad Peperkoorn et al., 2020<br>"The Mere Presence of Others."</div>
+      </div>
+      <p class="science-body">Il a mesuré : la présence d'un tiers réduit significativement la profondeur et l'honnêteté des échanges dans une conversation. L'intimité réelle est structurellement impossible en groupe. Erwan a observé. Ça a confirmé son intuition. La Passerelle 1-to-1 du Module 4 est construite sur ce constat : le groupe sert à repérer, le 1-to-1 est l'objectif.</p>
+    </div>
+
+  </div>
+
+  <p class="body-p" style="margin-top: 52px;">Tu n'es pas en panne. Tu es <strong>un processeur de haute précision</strong> dans un monde conçu pour les CPUs bas de gamme bruyants.</p>
+
+
+
+  <!-- OBJECTIONS -->
+  <h2 class="callout">Tu as peut-être plein de questions qui te viennent à l'esprit</h2>
+
+  <div class="objection-block">
+    <p class="objection-q">Toi : Et si je suis trop introverti pour que ça marche pour moi ?</p>
+    <div class="objection-a">
+      <p>Moi : C'est exactement pour toi que c'est conçu.</p>
+      <p>Le système ne te demande pas de chercher de la dopamine, la chimie des extravertis, épuisante par définition pour ton cerveau. Il te demande d'utiliser l'acétylcholine, le neurotransmetteur de la profondeur et de la réflexion. La récompense interne.</p>
+      <p>Ton câblage n'est pas le problème. C'est le levier.</p>
+    </div>
+  </div>
+
+  <div class="objection-block">
+    <p class="objection-q">Toi : J'ai déjà tout essayé et rien n'a jamais marché</p>
+    <div class="objection-a">
+      <p>Tu as essayé des systèmes faits pour des extravertis.</p>
+      <p>Les soirées et clubs avec des inconnus bruyants, les afterworks de Delphine de la compta, les applis de rencontre amicale avec des gens qui cherchent à scroller. Ce sont des environnements à haute dépense d'énergie sociale et à faible densité de profils compatibles.</p>
+      <p>Le Module 1 t'apprend à filtrer avant d'agir. Tu arrêtes de dépenser ton énergie dans les mauvais contextes.</p>
+    </div>
+  </div>
+
+  <div class="objection-block">
+    <p class="objection-q">Toi : 90 min/semaine c'est impossible avec mon emploi du temps</p>
+    <div class="objection-a">
+      <p>90 minutes par semaine, c'est 13 minutes par jour.</p>
+      <p>Si tu as le temps de regarder une vidéo YouTube ou de scroller Reddit le soir, tu as le temps.</p>
+      <p>Et le template hebdomadaire du Module 2 te dit exactement quand et où dépenser ces 90 minutes. Pas de décision à prendre. Tu suis.</p>
+    </div>
+  </div>
+
+  <div class="objection-block">
+    <p class="objection-q">Toi : C'est trop artificiel de créer des amitiés avec un système</p>
+    <div class="objection-a">
+      <p>Arthur Aron a créé une intimité profonde entre des inconnus en 45 minutes avec un protocole de questions.</p>
+      <p>L'intimité n'est pas magique. C'est un algorithme.</p>
+      <p>La différence entre "utiliser un système" et "laisser faire le hasard", c'est la différence entre un résultat en 56 jours et une attente de 10 ans qui ne vient pas.</p>
+      <p>Le résultat final n'est pas artificiel. La connexion qu'Erwan a créée ne l'était pas.</p>
+    </div>
+  </div>
+
+  <div class="objection-block">
+    <p class="objection-q">Toi : Les gens autour de moi ne sont tout simplement pas compatibles</p>
+    <div class="objection-a">
+      <p>C'est précisément ce que le Module 1 résout.</p>
+      <p>Tu ne pars pas en espérant que les gens autour de toi sont compatibles. Tu cartographies d'abord. Tu identifies les 2 ou 3 environnements où la densité de profils proches du tien est naturellement élevée.</p>
+      <p>Tu arrêtes de tenter ta chance. Tu fais de l'ingénierie.</p>
+    </div>
+  </div>
+
+
+
+  <!-- GUARANTEE -->
+  <h2 class="callout">Tu ne prends aucun risque</h2>
+
+  <p class="body-p">Avant de continuer, laisse moi adresser l'éléphant dans la pièce. On est sur internet, un guide, une promesse, c'est pas la première fois que tu vois ça. Tu te dis probablement que c'est peut-être une arnaque, que le protocole ne fonctionne pas, ou même pire qu'il n'existe pas.</p>
+
+  <p class="body-p">C'est pour ça que tu es protégé par la <strong>double garantie Liens Profonds</strong>.</p>
+
+  <p class="body-p" style="font-style:italic; color: var(--text-secondary);">(Ce n'est pas du marketing, la loi m'y oblige)</p>
+
+  <div class="guarantee-wrap">
+    <span class="guarantee-header">Double Garantie Liens Profonds</span>
+    <div class="guarantee-item">
+      <div class="guarantee-item-title">Garantie 1 — Droit de rétractation légal</div>
+      <div class="guarantee-item-body">14 jours après l'achat, sans justification, sans question. Un email et tu es remboursé.</div>
+    </div>
+    <div class="guarantee-item">
+      <div class="guarantee-item-title">Garantie 2 — Garantie Liens ou Remboursement</div>
+      <div class="guarantee-item-body">Tu lis le guide. Tu appliques les modules. Si au bout de 8 semaines tu n'es pas satisfait, un email suffit. Remboursement complet.</div>
+    </div>
+  </div>
+
+  <p class="body-p">Pourquoi j'offre cette garantie ? Parce que je suis confiant dans la méthode, c'est de la science, et ça a marché sur Erwan.</p>
+
+  <p class="body-p">Et quand on y pense vraiment : Le seul vrai risque que tu prends, c'est que dans 8 semaines tu sois exactement là où tu es ce soir.</p>
+
+  <p class="body-p">Dans cet appart, un dimanche à 20h, à regarder le téléphone qui ne sonne pas.</p>
+
+
+
+  <!-- PRICE + CTA 1 -->
+  <h2 class="callout">Une offre spéciale, uniquement maintenant :</h2>
+
+  <p class="body-p">C'est le lancement du Protocole des Liens Vrais.</p>
+
+  <p class="body-p">Je suis confiant dans ce que j'ai construit. C'est pour ça que je lance à <strong>67€</strong> et non au tarif normal.</p>
+
+  <p class="body-p">Le prix monte dès que 100 personnes l'ont obtenu.</p>
+
+  <p class="body-p">La logique est simple : à 100 ventes, j'ai assez de retours pour justifier un prix plus élevé. Et vu le nombre de personnes qui tombent sur cette page, les 100 premiers slots ne traîneront pas.</p>
+
+  <p class="body-p">Si tu lis ça aujourd'hui, t'as le prix de lancement. Demain c'est possible qu'il ne soit plus à ce prix.</p>
+
+  <!-- OFFER BOX -->
+  <div style="border: 1px solid var(--accent-border); border-radius: 6px; background: var(--bg-surface); padding: 52px 48px; margin: 40px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; height: 50%; background: radial-gradient(ellipse, rgba(200,144,58,0.08) 0%, transparent 70%); filter: blur(80px); pointer-events: none;"></div>
+
+    <!-- Titre produit -->
+    <div style="text-align: center; margin-bottom: 8px; position: relative; z-index: 1;">
+      <span style="font-family: var(--font-display); font-size: 36px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent);">Le Protocole des Liens Vrais</span>
+    </div>
+
+    <!-- Image bundle -->
+    <div style="text-align: center; position: relative; z-index: 1; margin-bottom: 40px;">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(ellipse at center, rgba(200,144,58,0.75) 0%, rgba(200,144,58,0.35) 40%, transparent 70%); filter: blur(60px); pointer-events: none;"></div>
+      <img src="visual product.png" alt="Le Protocole des Liens Vrais" style="max-width: 800px; width: 100%; display: inline-block; position: relative; z-index: 1;">
+    </div>
+
+    <!-- Prix -->
+    <div style="text-align: center; margin-bottom: 32px; position: relative; z-index: 1;">
+      <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.15em; color: var(--text-secondary); text-decoration: line-through; margin-bottom: 6px;">Prix normal</div>
+      <span style="font-family: var(--font-display); font-size: 72px; font-weight: 600; color: var(--accent); line-height: 1;">67€</span>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align: center; margin-bottom: 20px; position: relative; z-index: 1;">
+      <a href="checkout.html" class="cta-btn">&rarr; Obtenir le Protocole des Liens Vrais</a>
+    </div>
+
+    <!-- Accès immédiat + garantie -->
+    <div style="text-align: center; margin-bottom: 36px; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <span style="font-family: var(--font-body); font-size: 20px; font-weight: 500; color: var(--text-primary);">Accès immédiat</span>
+      <span style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--text-primary);">Double garantie active : 14 jours de rétractation légale + Garantie Liens ou Remboursement</span>
+    </div>
+
+    <!-- Modules inclus -->
+    <div style="border-top: 1px solid var(--border); padding-top: 28px; position: relative; z-index: 1;">
+      <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); text-align: center; margin-bottom: 20px;">Ce qui est inclus</div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 0</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">Le Cadre Mental — comprendre ton câblage neurochimique</span>
         </div>
-        <div class="checkout-embed-wrap">
-          <div
-            data-whop-checkout-plan-id="plan_Z1dnklYYeLqzN"
-            data-whop-checkout-theme="dark"
-            style="width: 100%;"
-          ></div>
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 1</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">Le Filtre — grille d'évaluation des environnements compatibles</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 2</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">Le Protocole de Répétition — template 90 min/semaine</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 3</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">Les Questions de Profondeur — banque de 40 questions calibrées</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 4</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">La Passerelle 1-to-1 — scripts de conversion exacts</span>
         </div>
       </div>
     </div>
 
   </div>
+
+
+
+  <!-- FAQ -->
+  <span class="section-label">FAQ</span>
+
+  <details class="faq-item">
+    <summary>C'est quoi exactement le format ?</summary>
+    <p class="faq-a">Un guide complet en PDF, structuré en 5 modules. Avec : la grille d'évaluation des environnements (Module 1), le template hebdomadaire 90 min/semaine (Module 2), la banque de 40 questions calibrées en 3 niveaux (Module 3), et les scripts de conversion 1-to-1 (Module 4). Tout en accès immédiat après l'achat.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>C'est pour qui exactement ?</summary>
+    <p class="faq-a">Pour les hommes de 20 à 30 ans, introvertis, qui ont déjà tenté les solutions classiques, clubs, afterworks, apps, sans résultat. Si tu cherches un système pour devenir extraverti ou pour networker professionnellement, c'est pas pour toi.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Et si je n'ai vraiment personne autour de moi en ce moment ?</summary>
+    <p class="faq-a">Le Module 1 commence par cartographier tes environnements existants et identifier ceux à modifier ou à ajouter. Tu n'as pas besoin d'un réseau de départ. Tu as besoin d'un filtre.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>J'ai essayé des dizaines de choses, je ne crois plus vraiment que ça peut marcher pour moi.</summary>
+    <p class="faq-a">C'est exactement pour ce genre de profil, ton profil, que ce protocole a été construit. T'as pas besoin de croire que ça marche avant de commencer. T'as besoin de l'appliquer et de voir. Et si c'est pas satisfaisant après application, tu es remboursé.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Je suis en télétravail total, zéro contact humain dans ma semaine. C'est possible quand même ?</summary>
+    <p class="faq-a">Oui. Le Module 1 identifie spécifiquement les environnements non-professionnels compatibles avec un profil remote ou freelance. L'absence de bureau n'est pas un blocage, c'est une variable à calibrer.</p>
+  </details>
+
+  <details class="faq-item">
+    <summary>Ça demande combien de temps par semaine au total ?</summary>
+    <p class="faq-a">90 minutes. C'est la contrainte maximum du système. Tout est conçu pour fonctionner dans cette fenêtre.</p>
+  </details>
+
+
+
+  <!-- FINAL CTA -->
+  <p class="body-p" style="text-align:center; font-size:18px; margin-top: 80px;"><strong style="color: var(--accent);">Tu es encore là ?</strong></p>
+  <p class="body-p" style="text-align:center; font-size:18px;">Wow</p>
+  <p class="body-p" style="text-align:center;">Si tu es encore là c'est que soit tu m'aimes bien soit tu t'ennuies. Anyway vu que tu es venu jusqu'ici, autant en profiter pour te faire des amis, comme ça tu arrêteras peut-être de scroller des pages jusqu'à la toute fin à l'avenir.</p>
+
+  <p class="body-p" style="text-align:center;">C'est par ici pour se faire des amis :</p>
+
+  <!-- OFFER BOX FINALE -->
+  <div style="border: 1px solid var(--accent-border); border-radius: 6px; background: var(--bg-surface); padding: 52px 48px; margin: 40px 0; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; height: 50%; background: radial-gradient(ellipse, rgba(200,144,58,0.08) 0%, transparent 70%); filter: blur(80px); pointer-events: none;"></div>
+
+    <!-- Titre produit -->
+    <div style="text-align: center; margin-bottom: 8px; position: relative; z-index: 1;">
+      <span style="font-family: var(--font-display); font-size: 36px; font-weight: 700; letter-spacing: 0.04em; color: var(--accent);">Le Protocole des Liens Vrais</span>
+    </div>
+
+    <!-- Image bundle -->
+    <div style="text-align: center; position: relative; z-index: 1; margin-bottom: 40px;">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: radial-gradient(ellipse at center, rgba(200,144,58,0.75) 0%, rgba(200,144,58,0.35) 40%, transparent 70%); filter: blur(60px); pointer-events: none;"></div>
+      <img src="visual product.png" alt="Le Protocole des Liens Vrais" style="max-width: 800px; width: 100%; display: inline-block; position: relative; z-index: 1;">
+    </div>
+
+    <!-- Prix -->
+    <div style="text-align: center; margin-bottom: 32px; position: relative; z-index: 1;">
+      <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.15em; color: var(--text-secondary); text-decoration: line-through; margin-bottom: 6px;">Prix normal</div>
+      <span style="font-family: var(--font-display); font-size: 72px; font-weight: 600; color: var(--accent); line-height: 1;">67€</span>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align: center; margin-bottom: 20px; position: relative; z-index: 1;">
+      <a href="checkout.html" class="cta-btn">&rarr; Obtenir le Protocole des Liens Vrais</a>
+    </div>
+
+    <!-- Accès immédiat + garantie -->
+    <div style="text-align: center; margin-bottom: 36px; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <span style="font-family: var(--font-body); font-size: 20px; font-weight: 500; color: var(--text-primary);">Accès immédiat</span>
+      <span style="font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--text-primary);">Double garantie active : 14 jours de rétractation légale + Garantie Liens ou Remboursement</span>
+    </div>
+
+    <!-- Modules inclus -->
+    <div style="border-top: 1px solid var(--border); padding-top: 28px; position: relative; z-index: 1;">
+      <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); text-align: center; margin-bottom: 20px;">Ce qui est inclus</div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 0</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">Le Cadre Mental — comprendre ton câblage neurochimique</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 1</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">Le Filtre — grille d'évaluation des environnements compatibles</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 2</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">Le Protocole de Répétition — template 90 min/semaine</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 3</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">Les Questions de Profondeur — banque de 40 questions calibrées</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="color: #4ade80; font-size: 16px; flex-shrink: 0;">✓</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent); flex-shrink: 0;">MODULE 4</span>
+          <span style="font-family: var(--font-body); font-size: 16px; color: var(--text-primary);">La Passerelle 1-to-1 — scripts de conversion exacts</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div id="scroll-widget">
+  <span id="scroll-label">Progression</span>
+  <div id="scroll-track"><div id="scroll-fill"></div></div>
 </div>
 
 <script>
-  // Écoute les events de resize envoyés par l'iframe Whop
-  window.addEventListener('message', function(e) {
-    if (!e.data) return;
-    var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
-    // Whop envoie typiquement {type:'resize', height:X} ou {height:X}
-    var h = data.height || (data.type === 'resize' && data.height);
-    if (h && h > 0) {
-      var iframe = document.querySelector('.checkout-embed-wrap iframe');
-      if (iframe) iframe.style.minHeight = h + 'px';
-    }
-  });
+  const fill = document.getElementById('scroll-fill');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const raw = docHeight > 0 ? scrollTop / docHeight : 0;
+    // Ease-out: fast at start, slows progressively
+    const eased = Math.pow(raw, 0.38);
+    fill.style.height = (eased * 100) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
 </script>
 </body>
 </html>

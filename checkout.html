@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande — Le Protocole des Liens Vrais</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script async defer src="https://js.whop.com/static/checkout/loader.js"></script>
+
+<style>
+:root {
+  --bg:             #0B0B0B;
+  --bg-surface:     #141414;
+  --bg-elevated:    #1C1C1C;
+  --border:         #2A2A2A;
+  --border-light:   #1F1F1F;
+  --text-primary:   #F2EDE6;
+  --text-secondary: #8A8279;
+  --text-ghost:     #3A3530;
+  --accent:         #C8903A;
+  --accent-dim:     rgba(200,144,58,0.10);
+  --accent-border:  rgba(200,144,58,0.25);
+  --font-display:   'Cormorant Garamond', Georgia, serif;
+  --font-body:      'Lora', Georgia, serif;
+  --font-mono:      'IBM Plex Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 100;
+}
+
+/* ── LAYOUT ── */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px 24px 100px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* ── BACK LINK ── */
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-ghost);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 48px;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--text-secondary); }
+
+/* ── LEFT COL ── */
+.col-product {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title */
+.product-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.product-tagline {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+/* Bundle image */
+.bundle-wrap {
+  position: relative;
+  text-align: center;
+  margin-bottom: 36px;
+}
+.bundle-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%; height: 80%;
+  background: radial-gradient(ellipse at center, rgba(200,144,58,0.55) 0%, rgba(200,144,58,0.2) 40%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+.bundle-wrap img {
+  width: 100%;
+  max-width: 420px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Price */
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.price-old {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-ghost);
+  text-decoration: line-through;
+}
+.price-current {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 0 28px;
+}
+
+/* Modules list */
+.modules-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.module-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.module-check {
+  color: #4ade80;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.module-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.module-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Guarantee */
+.guarantee-block {
+  border: 1px solid var(--accent-border);
+  border-radius: 4px;
+  padding: 24px 28px;
+  background: var(--accent-dim);
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.guarantee-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.guarantee-title {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.guarantee-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.guarantee-item:last-child { margin-bottom: 0; }
+
+.guarantee-bullet {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.guarantee-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.65;
+}
+
+/* Format note */
+.format-note {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--text-ghost);
+  line-height: 1.8;
+}
+
+/* ── RIGHT COL — CHECKOUT ── */
+.col-checkout {}
+
+.checkout-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  position: sticky;
+  top: 32px;
+}
+
+.checkout-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.checkout-secure {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--text-ghost);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.checkout-secure::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4CAF50;
+  opacity: 0.7;
+}
+
+.checkout-embed-wrap {
+  width: 100%;
+  padding: 8px;
+}
+.checkout-embed-wrap iframe {
+  width: 100% !important;
+  min-height: 900px;
+  border: none !important;
+  display: block;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 820px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .product-title { font-size: 34px; }
+  .checkout-panel { position: static; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+  <div class="container">
+
+    <!-- LEFT — Résumé produit -->
+    <div class="col-product">
+
+      <a href="index.html" class="back-link">&larr; Retour à la page de vente</a>
+
+      <h1 class="product-title">Le Protocole des Liens Vrais</h1>
+      <p class="product-tagline">De zéro connexion réelle à 2 personnes que tu peux appeler à 23h — en 56 jours et 90 min/semaine.</p>
+
+      <!-- Bundle image -->
+      <div class="bundle-wrap">
+        <img src="visual product.png" alt="Le Protocole des Liens Vrais — Bundle">
+      </div>
+
+      <!-- Prix -->
+      <div class="price-row">
+        <span class="price-old">Prix normal</span>
+        <span class="price-current">67€</span>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Modules -->
+      <span class="modules-label">Ce qui est inclus</span>
+      <div class="modules-list">
+        <div class="module-item">
+          <span class="module-check">✓</span>
+          <span class="module-tag">Module 0</span>
+          <span class="module-desc">Le Cadre Mental — comprendre ton câblage neurochimique</span>
+        </div>
+        <div class="module-item">
+          <span class="module-check">✓</span>
+          <span class="module-tag">Module 1</span>
+          <span class="module-desc">Le Filtre — grille d'évaluation des environnements compatibles</span>
+        </div>
+        <div class="module-item">
+          <span class="module-check">✓</span>
+          <span class="module-tag">Module 2</span>
+          <span class="module-desc">Le Protocole de Répétition — template 90 min/semaine</span>
+        </div>
+        <div class="module-item">
+          <span class="module-check">✓</span>
+          <span class="module-tag">Module 3</span>
+          <span class="module-desc">Les Questions de Profondeur — banque de 40 questions calibrées</span>
+        </div>
+        <div class="module-item">
+          <span class="module-check">✓</span>
+          <span class="module-tag">Module 4</span>
+          <span class="module-desc">La Passerelle 1-to-1 — scripts de conversion exacts</span>
+        </div>
+        <div class="module-item">
+          <span class="module-check">✓</span>
+          <span class="module-tag">Bonus</span>
+          <span class="module-desc">Plan 8 semaines + checklist de progression + protocole d'échec</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- Garantie -->
+      <div class="guarantee-block">
+        <span class="guarantee-title">Double garantie active</span>
+        <div class="guarantee-item">
+          <span class="guarantee-bullet">01</span>
+          <span class="guarantee-text"><strong>14 jours de rétractation légale</strong> — remboursement immédiat, sans justification, sans question.</span>
+        </div>
+        <div class="guarantee-item">
+          <span class="guarantee-bullet">02</span>
+          <span class="guarantee-text"><strong>Garantie Liens ou Remboursement</strong> — tu appliques les 8 semaines et tu n'as aucun résultat, tu es remboursé.</span>
+        </div>
+      </div>
+
+      <!-- Format -->
+      <div class="format-note">
+        Format PDF · Accès immédiat après paiement<br>
+        Construit sur de la recherche en psychologie sociale
+      </div>
+
+    </div>
+
+    <!-- RIGHT — Checkout Whop -->
+    <div class="col-checkout">
+      <div class="checkout-panel">
+        <div class="checkout-header">
+          <span class="checkout-label">Accès au guide — 67€</span>
+          <span class="checkout-secure">Paiement sécurisé</span>
+        </div>
+        <div class="checkout-embed-wrap">
+          <div
+            data-whop-checkout-plan-id="plan_Z1dnklYYeLqzN"
+            data-whop-checkout-theme="dark"
+            style="width: 100%;"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  window.addEventListener('message', function(e) {
+    if (!e.data) return;
+    var data = e.data;
+    if (typeof data === 'string') {
+      try { data = JSON.parse(data); } catch (_) { return; }
+    }
+    if (!data || typeof data !== 'object') return;
+    var h = data.height || (data.type === 'resize' && data.height);
+    if (h && h > 0) {
+      var iframe = document.querySelector('.checkout-embed-wrap iframe');
+      if (iframe) iframe.style.minHeight = h + 'px';
+    }
+  });
+</script>
+</body>
+</html>
