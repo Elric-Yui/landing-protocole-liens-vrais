@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conditions Générales de Vente — Le Protocole des Liens Vrais</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IBM+Plex+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:             #0B0B0B;
+  --bg-surface:     #141414;
+  --bg-elevated:    #1C1C1C;
+  --border:         #2A2A2A;
+  --border-light:   #1F1F1F;
+  --text-primary:   #F2EDE6;
+  --text-secondary: #8A8279;
+  --text-ghost:     #3A3530;
+  --accent:         #C8903A;
+  --accent-dim:     rgba(200,144,58,0.10);
+  --accent-border:  rgba(200,144,58,0.25);
+  --font-display:   'Cormorant Garamond', Georgia, serif;
+  --font-body:      'Lora', Georgia, serif;
+  --font-mono:      'IBM Plex Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.page-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 6vw 120px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 56px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
+
+.doc-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.doc-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 56px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.section-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.section-body p {
+  margin-bottom: 12px;
+}
+.section-body p:last-child { margin-bottom: 0; }
+
+.section-body strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.section-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.info-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: 2px;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+
+.info-block .info-row {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.info-block .info-label {
+  color: var(--text-ghost);
+  flex-shrink: 0;
+  min-width: 220px;
+}
+
+.info-block .info-val {
+  color: var(--text-secondary);
+}
+
+.subsection-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 20px 0 8px;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.bullet-list li {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.bullet-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+
+.page-footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-ghost);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .doc-title { font-size: 36px; }
+  .info-block .info-row { flex-direction: column; gap: 2px; }
+  .info-block .info-label { min-width: unset; }
+  .page-footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <a href="index.html" class="back-link">← Retour à la page principale</a>
+
+  <div class="doc-label">Document légal</div>
+  <h1 class="doc-title">Conditions Générales de Vente</h1>
+  <div class="doc-date">Dernière mise à jour : [DATE]</div>
+
+  <!-- 1 -->
+  <div class="section">
+    <div class="section-num">Article 1</div>
+    <h2 class="section-title">Identification du Vendeur</h2>
+    <div class="section-body">
+      <p>Le présent site est édité par :</p>
+    </div>
+    <div class="info-block">
+      <div class="info-row"><span class="info-label">Nom / Raison sociale</span><span class="info-val">[NOM OU RAISON SOCIALE]</span></div>
+      <div class="info-row"><span class="info-label">Statut juridique</span><span class="info-val">[EX : AUTO-ENTREPRENEUR / SASU / EURL]</span></div>
+      <div class="info-row"><span class="info-label">Numéro SIRET</span><span class="info-val">[NUMÉRO SIRET]</span></div>
+      <div class="info-row"><span class="info-label">Adresse du siège social</span><span class="info-val">[ADRESSE COMPLÈTE]</span></div>
+      <div class="info-row"><span class="info-label">Adresse e-mail</span><span class="info-val">[EMAIL DE CONTACT]</span></div>
+      <div class="info-row"><span class="info-label">N° TVA intracommunautaire</span><span class="info-val">[NUMÉRO TVA — si applicable]</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 2 -->
+  <div class="section">
+    <div class="section-num">Article 2</div>
+    <h2 class="section-title">Objet</h2>
+    <div class="section-body">
+      <p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre le vendeur et tout acheteur (ci-après « le Client ») souhaitant acquérir les produits numériques proposés sur le site <strong>[URL DU SITE]</strong>.</p>
+      <p>Tout achat implique l'acceptation pleine et entière des présentes CGV.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 3 -->
+  <div class="section">
+    <div class="section-num">Article 3</div>
+    <h2 class="section-title">Produits et Services</h2>
+    <div class="section-body">
+      <p>Le vendeur commercialise les produits numériques suivants :</p>
+      <ul class="bullet-list">
+        <li><strong>Le Protocole des Liens Vrais</strong> — guide PDF numérique [VERSION : ex. Bêta / Standard / Complète]</li>
+        <li>[AUTRES PRODUITS OU BONUS ÉVENTUELS]</li>
+      </ul>
+      <p>Les produits sont délivrés sous format numérique (PDF téléchargeable). Aucun produit physique n'est expédié.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 4 -->
+  <div class="section">
+    <div class="section-num">Article 4</div>
+    <h2 class="section-title">Prix</h2>
+    <div class="section-body">
+      <p>Les prix sont indiqués en euros (€) toutes taxes comprises (TTC).</p>
+      <ul class="bullet-list">
+        <li>Prix bêta : [PRIX BÊTA €]</li>
+        <li>Prix standard : 67 €</li>
+      </ul>
+      <p>Le vendeur se réserve le droit de modifier ses prix à tout moment. Les produits sont facturés au tarif en vigueur au moment de la validation de la commande.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 5 -->
+  <div class="section">
+    <div class="section-num">Article 5</div>
+    <h2 class="section-title">Commande et Paiement</h2>
+    <div class="section-body">
+      <div class="subsection-title">5.1 Processus de commande</div>
+      <p>Le Client sélectionne le produit, renseigne ses informations, puis procède au paiement. La commande est confirmée après réception du paiement.</p>
+
+      <div class="subsection-title">5.2 Moyens de paiement acceptés</div>
+      <ul class="bullet-list">
+        <li>Carte bancaire (Visa, Mastercard, American Express)</li>
+        <li>[AUTRES MOYENS : ex. PayPal, Stripe, etc.]</li>
+      </ul>
+      <p>Le paiement est sécurisé via <strong>[NOM DU PRESTATAIRE DE PAIEMENT — ex. Stripe / Gumroad / ThriveCart]</strong>.</p>
+
+      <div class="subsection-title">5.3 Confirmation de commande</div>
+      <p>Un e-mail de confirmation est envoyé à l'adresse renseignée lors de la commande dans les [X] minutes suivant la validation.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 6 -->
+  <div class="section">
+    <div class="section-num">Article 6</div>
+    <h2 class="section-title">Livraison des Produits Numériques</h2>
+    <div class="section-body">
+      <p>Les produits numériques sont mis à disposition du Client immédiatement après confirmation du paiement, via :</p>
+      <ul class="bullet-list">
+        <li>Un lien de téléchargement transmis par e-mail, et/ou</li>
+        <li>Un accès à un espace client ou une plateforme dédiée.</li>
+      </ul>
+      <p>En cas de non-réception dans les [X] heures, le Client est invité à contacter : <strong>[EMAIL DE CONTACT]</strong>.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 7 -->
+  <div class="section">
+    <div class="section-num">Article 7</div>
+    <h2 class="section-title">Droit de Rétractation</h2>
+    <div class="section-body">
+      <div class="subsection-title">7.1 Principe</div>
+      <p>Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contenus numériques dont l'exécution a commencé avec l'accord préalable exprès du consommateur et sa renonciation expresse à son droit de rétractation.</p>
+
+      <div class="subsection-title">7.2 Renonciation expresse</div>
+      <p>En procédant au paiement, le Client reconnaît expressément renoncer à son droit de rétractation dès lors que le téléchargement ou l'accès au produit numérique a débuté.</p>
+
+      <div class="subsection-title">7.3 Politique de remboursement volontaire</div>
+      <p>Par dérogation commerciale, <strong>[NOM OU RAISON SOCIALE]</strong> propose une garantie de remboursement de [X] jours / [NON APPLICABLE] si [CONDITIONS ÉVENTUELLES].</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 8 -->
+  <div class="section">
+    <div class="section-num">Article 8</div>
+    <h2 class="section-title">Propriété Intellectuelle</h2>
+    <div class="section-body">
+      <p>L'ensemble des contenus du site et des produits (textes, guides, méthodes, visuels, structures pédagogiques) sont la propriété exclusive de <strong>[NOM OU RAISON SOCIALE]</strong> et sont protégés par le droit d'auteur.</p>
+      <p>Toute reproduction, distribution, revente ou modification, totale ou partielle, sans autorisation écrite préalable, est strictement interdite et constitue une contrefaçon.</p>
+      <p>L'achat d'un produit confère au Client une licence d'utilisation personnelle, non-exclusive et non-transférable.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 9 -->
+  <div class="section">
+    <div class="section-num">Article 9</div>
+    <h2 class="section-title">Responsabilité</h2>
+    <div class="section-body">
+      <p>Les produits proposés sont des guides informatifs à vocation pédagogique. Le vendeur ne saurait être tenu responsable des résultats obtenus par le Client, qui dépendent de l'application personnelle et des circonstances individuelles de chacun.</p>
+      <p>Le vendeur ne garantit pas de résultats spécifiques. Les témoignages ou exemples présentés sont illustratifs et non représentatifs des résultats moyens.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 10 -->
+  <div class="section">
+    <div class="section-num">Article 10</div>
+    <h2 class="section-title">Données Personnelles</h2>
+    <div class="section-body">
+      <p>La collecte et le traitement des données personnelles sont régis par la <a href="politique-confidentialite.html">Politique de Confidentialité</a> disponible sur le site. Conformément au RGPD, le Client dispose d'un droit d'accès, de rectification et de suppression de ses données.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 11 -->
+  <div class="section">
+    <div class="section-num">Article 11</div>
+    <h2 class="section-title">Litiges et Droit Applicable</h2>
+    <div class="section-body">
+      <p>Les présentes CGV sont soumises au droit français.</p>
+      <p>En cas de litige, le Client est invité à contacter <strong>[EMAIL DE CONTACT]</strong> afin de trouver une solution amiable. À défaut d'accord amiable, le litige sera porté devant les tribunaux compétents du ressort de <strong>[VILLE DU TRIBUNAL COMPÉTENT]</strong>.</p>
+      <p>Le Client peut également recourir à la médiation de la consommation via la plateforme européenne de règlement en ligne des litiges : <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 12 -->
+  <div class="section">
+    <div class="section-num">Article 12</div>
+    <h2 class="section-title">Acceptation</h2>
+    <div class="section-body">
+      <p>En passant commande, le Client déclare avoir pris connaissance des présentes CGV et les accepter sans réserve.</p>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <span class="footer-brand">Protocole des Liens Vrais</span>
+    <nav class="footer-links">
+      <a href="cgv.html">CGV</a>
+      <a href="politique-confidentialite.html">Politique de confidentialité</a>
+    </nav>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de Confidentialité — Le Protocole des Liens Vrais</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=IBM+Plex+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:             #0B0B0B;
+  --bg-surface:     #141414;
+  --bg-elevated:    #1C1C1C;
+  --border:         #2A2A2A;
+  --border-light:   #1F1F1F;
+  --text-primary:   #F2EDE6;
+  --text-secondary: #8A8279;
+  --text-ghost:     #3A3530;
+  --accent:         #C8903A;
+  --accent-dim:     rgba(200,144,58,0.10);
+  --accent-border:  rgba(200,144,58,0.25);
+  --font-display:   'Cormorant Garamond', Georgia, serif;
+  --font-body:      'Lora', Georgia, serif;
+  --font-mono:      'IBM Plex Mono', 'Courier New', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.page-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 6vw 120px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 56px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
+
+.doc-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.doc-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.doc-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 56px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.section-body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.section-body p {
+  margin-bottom: 12px;
+}
+.section-body p:last-child { margin-bottom: 0; }
+
+.section-body strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.section-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.info-block {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: 2px;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+
+.info-block .info-row {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.info-block .info-label {
+  color: var(--text-ghost);
+  flex-shrink: 0;
+  min-width: 200px;
+}
+
+.subsection-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 20px 0 8px;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.bullet-list li {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.bullet-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+td {
+  padding: 10px 14px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+
+.rights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.rights-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px 16px;
+}
+
+.rights-item-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.rights-item-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.page-footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-ghost);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .doc-title { font-size: 36px; }
+  .info-block .info-row { flex-direction: column; gap: 2px; }
+  .info-block .info-label { min-width: unset; }
+  .rights-grid { grid-template-columns: 1fr; }
+  .page-footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <a href="index.html" class="back-link">← Retour à la page principale</a>
+
+  <div class="doc-label">Document légal</div>
+  <h1 class="doc-title">Politique de Confidentialité</h1>
+  <div class="doc-date">Dernière mise à jour : [DATE]</div>
+
+  <!-- 1 -->
+  <div class="section">
+    <div class="section-num">Article 1</div>
+    <h2 class="section-title">Responsable du Traitement</h2>
+    <div class="section-body">
+      <p>Le responsable du traitement des données personnelles collectées sur le site <strong>[URL DU SITE]</strong> est :</p>
+    </div>
+    <div class="info-block">
+      <div class="info-row"><span class="info-label">Nom / Raison sociale</span><span>[NOM OU RAISON SOCIALE]</span></div>
+      <div class="info-row"><span class="info-label">Adresse</span><span>[ADRESSE COMPLÈTE]</span></div>
+      <div class="info-row"><span class="info-label">E-mail</span><span>[EMAIL DE CONTACT]</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 2 -->
+  <div class="section">
+    <div class="section-num">Article 2</div>
+    <h2 class="section-title">Données Collectées</h2>
+    <div class="section-body">
+      <p>Dans le cadre de son activité, <strong>[NOM OU RAISON SOCIALE]</strong> collecte les données personnelles suivantes :</p>
+
+      <div class="subsection-title">2.1 Lors de l'inscription à la liste e-mail</div>
+      <ul class="bullet-list">
+        <li>Adresse e-mail</li>
+        <li>Prénom (si demandé)</li>
+      </ul>
+
+      <div class="subsection-title">2.2 Lors d'un achat</div>
+      <ul class="bullet-list">
+        <li>Prénom et nom</li>
+        <li>Adresse e-mail</li>
+        <li>Adresse de facturation</li>
+        <li>Informations de paiement (traitées directement par <strong>[NOM DU PRESTATAIRE]</strong> — non stockées par <strong>[NOM OU RAISON SOCIALE]</strong>)</li>
+      </ul>
+
+      <div class="subsection-title">2.3 Données de navigation (automatiques)</div>
+      <ul class="bullet-list">
+        <li>Adresse IP</li>
+        <li>Type de navigateur et système d'exploitation</li>
+        <li>Pages visitées et durée de visite</li>
+        <li>Source de trafic (via cookies d'analyse)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 3 -->
+  <div class="section">
+    <div class="section-num">Article 3</div>
+    <h2 class="section-title">Finalités du Traitement</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Finalité</th>
+            <th>Base légale</th>
+            <th>Durée de conservation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Envoi de la séquence e-mail et communications commerciales</td>
+            <td>Consentement (opt-in)</td>
+            <td>Jusqu'au désabonnement</td>
+          </tr>
+          <tr>
+            <td>Exécution du contrat (livraison du produit)</td>
+            <td>Exécution du contrat</td>
+            <td>5 ans (obligations comptables)</td>
+          </tr>
+          <tr>
+            <td>Facturation et obligations légales</td>
+            <td>Obligation légale</td>
+            <td>10 ans</td>
+          </tr>
+          <tr>
+            <td>Analyse de la performance du site</td>
+            <td>Intérêt légitime / Consentement</td>
+            <td>[X] mois</td>
+          </tr>
+          <tr>
+            <td>Retargeting publicitaire (Meta Ads, etc.)</td>
+            <td>Consentement</td>
+            <td>Durée de la campagne</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 4 -->
+  <div class="section">
+    <div class="section-num">Article 4</div>
+    <h2 class="section-title">Partage des Données avec des Tiers</h2>
+    <div class="section-body">
+      <p><strong>[NOM OU RAISON SOCIALE]</strong> ne vend jamais les données personnelles de ses utilisateurs. Les données peuvent être partagées avec les prestataires suivants, dans le strict cadre de l'exécution des services :</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Prestataire</th>
+            <th>Rôle</th>
+            <th>Localisation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[ex. Brevo / Mailchimp / ConvertKit]</td>
+            <td>Envoi des e-mails</td>
+            <td>[UE / USA]</td>
+          </tr>
+          <tr>
+            <td>[ex. Stripe / Gumroad / ThriveCart]</td>
+            <td>Traitement des paiements</td>
+            <td>[UE / USA]</td>
+          </tr>
+          <tr>
+            <td>[ex. Meta Platforms]</td>
+            <td>Publicité (retargeting)</td>
+            <td>USA</td>
+          </tr>
+          <tr>
+            <td>[ex. Google Analytics / Plausible]</td>
+            <td>Analyse d'audience</td>
+            <td>[UE / USA]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-body" style="margin-top: 16px;">
+      <p>En cas de transfert hors Union Européenne, <strong>[NOM OU RAISON SOCIALE]</strong> s'assure que des garanties appropriées sont en place (clauses contractuelles types, décision d'adéquation, etc.).</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 5 -->
+  <div class="section">
+    <div class="section-num">Article 5</div>
+    <h2 class="section-title">Cookies</h2>
+    <div class="section-body">
+      <div class="subsection-title">5.1 Cookies utilisés</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Finalité</th>
+            <th>Durée</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cookies essentiels</td>
+            <td>Fonctionnement du site</td>
+            <td>Session</td>
+          </tr>
+          <tr>
+            <td>Cookies analytiques</td>
+            <td>Mesure d'audience (ex. [outil])</td>
+            <td>[X] mois</td>
+          </tr>
+          <tr>
+            <td>Cookies publicitaires</td>
+            <td>Retargeting Meta / Google</td>
+            <td>[X] mois</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-body" style="margin-top: 16px;">
+      <div class="subsection-title">5.2 Gestion des cookies</div>
+      <p>Lors de votre première visite, un bandeau vous demande votre consentement pour les cookies non essentiels. Vous pouvez modifier vos préférences à tout moment via le gestionnaire de cookies du site ou les paramètres de votre navigateur.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 6 -->
+  <div class="section">
+    <div class="section-num">Article 6</div>
+    <h2 class="section-title">Droits des Utilisateurs</h2>
+    <div class="section-body">
+      <p>Conformément au RGPD (Règlement UE 2016/679) et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
+    </div>
+    <div class="rights-grid">
+      <div class="rights-item">
+        <div class="rights-item-title">Accès</div>
+        <div class="rights-item-desc">Obtenir une copie de vos données personnelles</div>
+      </div>
+      <div class="rights-item">
+        <div class="rights-item-title">Rectification</div>
+        <div class="rights-item-desc">Corriger des données inexactes</div>
+      </div>
+      <div class="rights-item">
+        <div class="rights-item-title">Effacement</div>
+        <div class="rights-item-desc">Demander la suppression de vos données ("droit à l'oubli")</div>
+      </div>
+      <div class="rights-item">
+        <div class="rights-item-title">Limitation</div>
+        <div class="rights-item-desc">Restreindre temporairement le traitement</div>
+      </div>
+      <div class="rights-item">
+        <div class="rights-item-title">Portabilité</div>
+        <div class="rights-item-desc">Recevoir vos données dans un format structuré</div>
+      </div>
+      <div class="rights-item">
+        <div class="rights-item-title">Opposition</div>
+        <div class="rights-item-desc">S'opposer au traitement fondé sur l'intérêt légitime ou à des fins de prospection</div>
+      </div>
+    </div>
+    <div class="section-body" style="margin-top: 16px;">
+      <div class="subsection-title">Comment exercer vos droits</div>
+      <p>Par e-mail à : <strong>[EMAIL DE CONTACT]</strong>. Un délai de réponse d'un mois maximum s'applique (pouvant être prolongé à 3 mois pour les demandes complexes).</p>
+      <p>Vous avez également le droit d'introduire une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 7 -->
+  <div class="section">
+    <div class="section-num">Article 7</div>
+    <h2 class="section-title">Sécurité des Données</h2>
+    <div class="section-body">
+      <p><strong>[NOM OU RAISON SOCIALE]</strong> met en oeuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte, altération ou divulgation :</p>
+      <ul class="bullet-list">
+        <li>Connexions chiffrées (HTTPS / TLS)</li>
+        <li>Accès aux données restreint aux personnes habilitées</li>
+        <li>Prestataires de paiement certifiés PCI-DSS</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 8 -->
+  <div class="section">
+    <div class="section-num">Article 8</div>
+    <h2 class="section-title">Désabonnement</h2>
+    <div class="section-body">
+      <p>Vous pouvez vous désabonner de la liste e-mail à tout moment en cliquant sur le lien de désinscription présent en bas de chaque e-mail, ou en envoyant une demande à : <strong>[EMAIL DE CONTACT]</strong>.</p>
+      <p>Le désabonnement prend effet dans un délai de [X] jours ouvrés.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 9 -->
+  <div class="section">
+    <div class="section-num">Article 9</div>
+    <h2 class="section-title">Modifications</h2>
+    <div class="section-body">
+      <p>La présente politique peut être modifiée à tout moment. La version en vigueur est celle publiée sur cette page, avec la date de dernière mise à jour en en-tête.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 10 -->
+  <div class="section">
+    <div class="section-num">Article 10</div>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-body">
+      <p>Pour toute question relative à la gestion de vos données personnelles : <strong>[EMAIL DE CONTACT]</strong></p>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <span class="footer-brand">Protocole des Liens Vrais</span>
+    <nav class="footer-links">
+      <a href="cgv.html">CGV</a>
+      <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </nav>
+  </footer>
+
+</div>
+</body>
+</html>
